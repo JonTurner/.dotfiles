@@ -6,3 +6,10 @@ The following creates a symlink for .zshrc
 cd .dotfiles
 stow zsh
 ```
+
+
+must symlink `.zshenv`
+```bash
+ln -s ~/.config/zsh/.zshrc ~/.zshrc
+```
+
