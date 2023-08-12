@@ -4,12 +4,13 @@
 The following creates a symlink for .zshrc
 ```bash
 cd .dotfiles
-stow zsh
+stow -t ~/.config .config
 ```
+old way: `stow zsh`
 
 
 must symlink `.zshenv`
 ```bash
-ln -s ~/.config/zsh/.zshrc ~/.zshrc
+ln -s ~/.dotfiles/.config/zsh/.zshenv ~/.zshenv
 ```
 
