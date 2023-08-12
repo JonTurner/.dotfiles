@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+ # this script lets you quickly create or switch to tmux sessions based on
+ # directories. If called without an argument, it lets you choose from existing
+ # directories via fzf. If the chosen directory corresponds to an existing tmux
+ # session, you're switched to that session; otherwise, a new session is created.
+ # It seems like a useful tool for managing project-based tmux sessions.
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
