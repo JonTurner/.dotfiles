@@ -1,0 +1,8 @@
+[md]
+formatter = "shfmt"
+command = "shfmt"
+
+[md.ruby]
+formatter = "rubocop"
+command = "rubocop -A -f fi -s"
+
