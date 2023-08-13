@@ -37,10 +37,8 @@ local plugins = {
 
   {
 			'nvim-treesitter/nvim-treesitter',
-			build = function()
-				local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-				ts_update()
-			end,},
+      build = ":TSUpdate"
+    },
   "nvim-treesitter/playground",
   "theprimeagen/harpoon",
   "theprimeagen/refactoring.nvim",
@@ -183,4 +181,4 @@ local plugins = {
 -- rm -rf ~/.config/nvim/plugin/packer_compiled.lua
 
 
-require("lazy").setup(plugins, opts)
+require("lazy").setup(plugins)
