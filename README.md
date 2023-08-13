@@ -24,4 +24,6 @@ install https://github.com/ohmyzsh/ohmyzsh
 
 install and configure `https://github.com/romkatv/powerlevel10k
 https://github.com/zsh-users/zsh-syntax-highlighting
+https://github.com/zsh-users/zsh-autosuggestions
+https://github.com/athityakumar/colorls
 

@@ -78,7 +78,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-syntax-highlighting)
+plugins=(
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -131,7 +134,7 @@ alias gc='git commit -v'
 alias gst='git status'
 alias gdc='git diff --cached'
 alias gap='git add -p'
-alias ll='ls -lah'
+alias ll='colorls -lah'
 
 alias glog="git log --name-status"
 alias gss="git status -s"
@@ -162,6 +165,8 @@ alias gprune="git branch --merged | grep -v '\*' | xargs -n 1 git branch -d"
 alias gpt="git push origin --tags"
 
 
+# https://github.com/zsh-users/zsh-autosuggestions
+bindkey '^ ' autosuggest-execute
 
 most-used-commands(){
   # Ben Orenstein - find most used commands
