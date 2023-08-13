@@ -1,16 +1,26 @@
 ### Stow
 ---
 
-The following creates a symlink for .zshrc
+The following creates a symlink for ~/.config
 ```bash
 cd .dotfiles
 stow -t ~/.config .config
 ```
-old way: `stow zsh`
 
 
-must symlink `.zshenv`
+must symlink `.zshenv` to ensure zsh can find configs in `~/.config/zsh`
 ```bash
 ln -s ~/.dotfiles/.config/zsh/.zshenv ~/.zshenv
 ```
+
+# terminal
+install `iterm2`
+### iterm2 color scheme
+`https://iterm2colorschemes.com/`
+<C-i> click colors tab.  Import `~/.dotfiles/gruvbox.itermcolors` and then select gruvbox in dropdown
+
+### Oh My Zsh
+install https://github.com/ohmyzsh/ohmyzsh
+
+install and configure `https://github.com/romkatv/powerlevel10k
 
