@@ -1,30 +1,28 @@
--- local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
--- if not vim.loop.fs_stat(lazypath) then
---   vim.fn.system({
---     "git",
---     "clone",
---     "--filter=blob:none",
---     "https://github.com/folke/lazy.nvim.git",
---     "--branch=stable", -- latest stable release
---     lazypath,
---   })
--- end
--- vim.opt.rtp:prepend(lazypath)
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-require('lazy').set({
+local plugins = {
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    'nvim-telescope/telescope.nvim', version = '0.1.0',
     dependencies = { {'nvim-lua/plenary.nvim'} }
   },
-
-  -- use({
-	  -- 'rose-pine/neovim',
-	  -- as = 'rose-pine',
-	  -- config = function()
-		  -- vim.cmd('colorscheme rose-pine')
-	  -- end
-  -- })
-
+  {
+	  'rose-pine/neovim',
+	  name = 'rose-pine',
+	  config = function()
+		  vim.cmd('colorscheme rose-pine')
+	  end
+  },
   {
       "folke/trouble.nvim",
       config = function()
@@ -108,7 +106,7 @@ require('lazy').set({
   "tpope/vim-rhubarb",
   {
     "kylechui/nvim-surround",
-    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
     config = function()
         require("nvim-surround").setup({
             -- Configuration here, or leave empty to use defaults
@@ -171,7 +169,7 @@ require('lazy').set({
   "nvim-tree/nvim-web-devicons",
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons', opt = true }
+    dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
   },
   -- use{
   --     "tbabej/taskwiki",
@@ -179,10 +177,10 @@ require('lazy').set({
   --         vim.g.taskwiki_markup_syntax = 'markdown'
   --     end
   -- }
-
-})
+}
 
 -- rm -rf ~/.local/share/nvim/site/pack/packer/
 -- rm -rf ~/.config/nvim/plugin/packer_compiled.lua
 
 
+require("lazy").setup(plugins, opts)

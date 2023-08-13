@@ -14,10 +14,11 @@
 -- ░▓▓▓▓▓▓▓▓▓▓
 -- ░░░░░░░░░░
 
-require("theprimeagen.set")
-require("theprimeagen.remap")
-require("theprimeagen.lualine-config")
-require("theprimeagen.nvim-web-devicons-config")
+require("JT.plugins")
+require("JT.set")
+require("JT.remap")
+require("JT.lualine-config")
+require("JT.nvim-web-devicons-config")
 
 
 local augroup = vim.api.nvim_create_augroup
