@@ -23,4 +23,5 @@ install `iterm2`
 install https://github.com/ohmyzsh/ohmyzsh
 
 install and configure `https://github.com/romkatv/powerlevel10k
+https://github.com/zsh-users/zsh-syntax-highlighting
 
