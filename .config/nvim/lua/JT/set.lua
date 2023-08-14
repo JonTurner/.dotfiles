@@ -41,6 +41,7 @@ vim.wo.foldenable = false
 
 vim.opt.smartcase = true -- Don't ignore casing with capitals
 vim.opt.ignorecase = true -- Ignore casing when searching for a word
+vim.g.loaded_perl_provider = 0
 
 -- local opt = vim.opt
 -- opt.number = true -- Display the row number on the left side of the window
