@@ -111,55 +111,53 @@ local plugins = {
         })
     end
   },
---       Old text                    Command         New text
--- --------------------------------------------------------------------------------
---     surr*ound_words             ysiw)           (surround_words)
---     *make strings               ys$"            "make strings"
---     [delete ar*ound me!]        ds]             delete around me!
---     remove <b>HTML t*ags</b>    dst             remove HTML tags
---     'change quot*es'            cs'"            "change quotes"
---     <b>or tag* types</b>        csth1<CR>       <h1>or tag types</h1>
---     delete(functi*on calls)     dsf             function calls
-  {
-      "vimwiki/vimwiki",
-      init = function()
-          -- attempting to enable copilot in vimwiki
-          -- VimWiki was overriding the <TAB> complettion for copilot
-          vim.g.vimwiki_key_mappings = { table_mappings = 0, }
-      end,
-      config = function()
-          -- makes vimiwiki use markdown links as [text](text.md) instead of [text](text)
-          vim.g.vimwiki_markdown_link_ext = 1
-          vim.g.vimwiki_folding = ''
-          vim.g.vimwiki_list = {
-              {
-                  path = '~/vimwiki/managed_billing',
-                  syntax = 'markdown',
-                  ext = '.md'
-              },
-              {
-                  path = '~/vimwiki/notes',
-                  syntax = 'markdown',
-                  ext = '.md'
-              },
-              {
-                  path = '~/vimwiki/investigations',
-                  syntax = 'markdown',
-                  ext = '.md'
-              }
-          }
-      end
-  },
-
-  {
-      "tools-life/taskwiki",
-      config = function()
-          vim.g.taskwiki_markup_syntax = 'markdown'
-          vim.g.taskwiki_filetypes = 'md'
-          vim.g.taskwiki_dont_fold = 1
-      end
-  },
-
+  --       Old text                    Command         New text
+  -- --------------------------------------------------------------------------------
+  --     surr*ound_words             ysiw)           (surround_words)
+  --     *make strings               ys$"            "make strings"
+  --     [delete ar*ound me!]        ds]             delete around me!
+  --     remove <b>HTML t*ags</b>    dst             remove HTML tags
+  --     'change quot*es'            cs'"            "change quotes"
+  --     <b>or tag* types</b>        csth1<CR>       <h1>or tag types</h1>
+  --     delete(functi*on calls)     dsf             function calls
+  -- {
+  --   "vimwiki/vimwiki",
+  --   init = function()
+  --     -- attempting to enable copilot in vimwiki
+  --     -- VimWiki was overriding the <TAB> complettion for copilot
+  --     vim.g.vimwiki_key_mappings = { table_mappings = 0, }
+  --   end,
+  --   config = function()
+  --     -- makes vimiwiki use markdown links as [text](text.md) instead of [text](text)
+  --     vim.g.vimwiki_markdown_link_ext = 1
+  --     vim.g.vimwiki_folding = ''
+  --     vim.g.vimwiki_list = {
+  --       {
+  --         path = '~/vimwiki/managed_billing',
+  --         syntax = 'markdown',
+  --         ext = '.md'
+  --       },
+  --       {
+  --         path = '~/vimwiki/notes',
+  --         syntax = 'markdown',
+  --         ext = '.md'
+  --       },
+  --       {
+  --         path = '~/vimwiki/investigations',
+  --         syntax = 'markdown',
+  --         ext = '.md'
+  --       }
+  --     }
+  --   end
+  -- },
+  -- {
+  --   "tools-life/taskwiki",
+  --   config = function()
+  --     vim.g.taskwiki_markup_syntax = 'markdown'
+  --     vim.g.taskwiki_filetypes = 'md'
+  --     vim.g.taskwiki_dont_fold = 1
+  --   end
+  -- },
   -- https://github.com/ryanoasis/nerd-fonts/#option-4-homebrew-fonts
   -- brew tap homebrew/cask-fonts
   -- brew install font-hack-nerd-font

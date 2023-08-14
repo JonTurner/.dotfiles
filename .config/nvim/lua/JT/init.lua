@@ -27,8 +27,8 @@ local ThePrimeagenGroup = augroup('ThePrimeagen', {})
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
 
-local autocmd = vim.api.nvim_create_autocmd
-local vimwiki_group = augroup('VimWiki', {})
+-- local autocmd = vim.api.nvim_create_autocmd
+-- local vimwiki_group = augroup('VimWiki', {})
 
 function R(name)
     require("plenary.reload").reload_module(name)
@@ -55,13 +55,13 @@ autocmd({"BufWritePre"}, {
 -- instead of [foo](foo.rb) - simply do foo.rb
 -- when cursor is on foo.rb, press <enter> to navigate to it
 -- This remaps enter to `gf` in vimwiki buffers
-autocmd({"FileType"}, {
-    group = vimwiki_group,
-    pattern = 'vimwiki',
-    callback = function()
-        vim.api.nvim_buf_set_keymap(0, 'n', '<CR>', 'gf', {silent=true})
-    end,
-})
+-- autocmd({"FileType"}, {
+--     group = vimwiki_group,
+--     pattern = 'vimwiki',
+--     callback = function()
+--         vim.api.nvim_buf_set_keymap(0, 'n', '<CR>', 'gf', {silent=true})
+--     end,
+-- })
 
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
