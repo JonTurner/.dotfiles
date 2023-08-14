@@ -19,6 +19,14 @@ require("JT.set")
 require("JT.remap")
 require("JT.lualine-config")
 require("JT.nvim-web-devicons-config")
+require("JT.nvim-lint")
+require("JT.formatter")
+
+-- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+--   callback = function()
+--     require("lint").try_lint()
+--   end,
+-- })
 
 
 local augroup = vim.api.nvim_create_augroup

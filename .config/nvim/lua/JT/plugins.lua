@@ -51,6 +51,10 @@ local plugins = {
       {'neovim/nvim-lspconfig'},
       {'williamboman/mason.nvim'},
       {'williamboman/mason-lspconfig.nvim'},
+      -- Linters
+      {'mfussenegger/nvim-lint'},
+      -- Formatters
+      {'mhartington/formatter.nvim'},
       -- Autocompletion
       {'hrsh7th/nvim-cmp'},
       {'hrsh7th/cmp-buffer'},
