@@ -38,6 +38,17 @@ local plugins = {
   },
   "nvim-treesitter/playground",
   "theprimeagen/harpoon",
+  -- {
+  --   "theprimeagen/harpoon",
+  --   config = function()
+  --     local mark = require("harpoon.mark")
+  --     local ui = require("harpoon.ui")
+  --     require("harpoon").setup({
+  --       vim.keymap.set("n", "<leader>a", mark.add_file),
+  --       vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu),
+  --     })
+  --   end
+  -- },
   "theprimeagen/refactoring.nvim",
   "mbbill/undotree",
   "tpope/vim-fugitive",
