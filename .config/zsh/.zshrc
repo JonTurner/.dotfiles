@@ -305,3 +305,6 @@ export PATH="$PATH:/Users/jon.turner/Library/Python/3.9/bin"
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 # source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+if command -v rbenv > /dev/null; then
+  eval "$(rbenv init --no-rehash - zsh)"
+fi
