@@ -1,20 +1,27 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
--- d
---
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
+end
+
+local packer_bootstrap = ensure_packer()
 
 -- Only required if you have packer configured as `opt`
-vim.cmd.packadd('packer.nvim')
-
+-- vim.cmd.packadd('packer.nvim')
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
-
   use({
 	  'rose-pine/neovim',
 	  as = 'rose-pine',
@@ -22,7 +29,6 @@ return require('packer').startup(function(use)
 		  vim.cmd('colorscheme rose-pine')
 	  end
   })
-
   use({
       "folke/trouble.nvim",
       config = function()
@@ -34,7 +40,6 @@ return require('packer').startup(function(use)
           }
       end
   })
-
   use {
 			'nvim-treesitter/nvim-treesitter',
 			run = function()
@@ -47,7 +52,6 @@ return require('packer').startup(function(use)
   use("mbbill/undotree")
   use("tpope/vim-fugitive")
   use("nvim-treesitter/nvim-treesitter-context");
-
   use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v1.x',
@@ -72,25 +76,16 @@ return require('packer').startup(function(use)
   }
 
   use("folke/zen-mode.nvim")
-  -- use("github/copilot.vim")
   use("eandrju/cellular-automaton.nvim")
-
   -- masks config file values with ********
   -- use("laytan/cloak.nvim")
   -- configure here: after/plugin/cloak.lua
 
-
   -- Jon Turner cusomizations
   use("tpope/vim-rails")
   use("tpope/vim-commentary")
-  -- use("tpope/vim-endwise")
-  -- This is just a rewrite of https://github.com/tpope/vim-endwise to leverage
-  -- Treesitter so it can be more accurate and work without having to run
-  -- Neovim's slow regex based highlighting along with nvim-treesitter highlighting.
-  use("RRethy/nvim-treesitter-endwise")
-
+  use("RRethy/nvim-treesitter-endwise") -- lua rewrite of tpope/vim-endwise
   use("tpope/vim-repeat")
-
   use("christoomey/vim-tmux-navigator")
   -- use("morhetz/gruvbox")
   use("github/copilot.vim")
@@ -127,47 +122,8 @@ return require('packer').startup(function(use)
 --     'change quot*es'            cs'"            "change quotes"
 --     <b>or tag* types</b>        csth1<CR>       <h1>or tag types</h1>
 --     delete(functi*on calls)     dsf             function calls
-  use("ThePrimeagen/vim-be-good")
+  -- use("ThePrimeagen/vim-be-good")
   -- use("ellisonleao/glow.nvim")
-  use{
-      "vimwiki/vimwiki",
-      init = function()
-          -- attempting to enable copilot in vimwiki
-          -- VimWiki was overriding the <TAB> complettion for copilot
-          vim.g.vimwiki_key_mappings = { table_mappings = 0, }
-      end,
-      config = function()
-          -- makes vimiwiki use markdown links as [text](text.md) instead of [text](text)
-          vim.g.vimwiki_markdown_link_ext = 1
-          vim.g.vimwiki_folding = ''
-          vim.g.vimwiki_list = {
-              {
-                  path = '~/vimwiki/managed_billing',
-                  syntax = 'markdown',
-                  ext = '.md'
-              },
-              {
-                  path = '~/vimwiki/notes',
-                  syntax = 'markdown',
-                  ext = '.md'
-              },
-              {
-                  path = '~/vimwiki/investigations',
-                  syntax = 'markdown',
-                  ext = '.md'
-              }
-          }
-      end
-  }
-
-  use{
-      "tools-life/taskwiki",
-      config = function()
-          vim.g.taskwiki_markup_syntax = 'markdown'
-          vim.g.taskwiki_filetypes = 'md'
-          vim.g.taskwiki_dont_fold = 1
-      end
-  }
 
   -- https://github.com/ryanoasis/nerd-fonts/#option-4-homebrew-fonts
   -- brew tap homebrew/cask-fonts
@@ -178,18 +134,61 @@ return require('packer').startup(function(use)
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
+
+  -- use("vim-ruby/vim-ruby")
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if packer_bootstrap then
+    require('packer').sync()
+  end
+
+end)
+
+  -- add new plugin
+  -- :so
+  -- :PackerSync
+  -- use{
+  --     "vimwiki/vimwiki",
+  --     init = function()
+  --         -- attempting to enable copilot in vimwiki
+  --         -- VimWiki was overriding the <TAB> complettion for copilot
+  --         vim.g.vimwiki_key_mappings = { table_mappings = 0, }
+  --     end,
+  --     config = function()
+  --         -- makes vimiwiki use markdown links as [text](text.md) instead of [text](text)
+  --         vim.g.vimwiki_markdown_link_ext = 1
+  --         vim.g.vimwiki_folding = ''
+  --         vim.g.vimwiki_list = {
+  --             {
+  --                 path = '~/vimwiki/managed_billing',
+  --                 syntax = 'markdown',
+  --                 ext = '.md'
+  --             },
+  --             {
+  --                 path = '~/vimwiki/notes',
+  --                 syntax = 'markdown',
+  --                 ext = '.md'
+  --             },
+  --             {
+  --                 path = '~/vimwiki/investigations',
+  --                 syntax = 'markdown',
+  --                 ext = '.md'
+  --             }
+  --         }
+  --     end
+  -- }
+
+  -- use{
+  --     "tools-life/taskwiki", -- this is the one that works (for me)
+  --     config = function()
+  --         vim.g.taskwiki_markup_syntax = 'markdown'
+  --         vim.g.taskwiki_filetypes = 'md'
+  --         vim.g.taskwiki_dont_fold = 1
+  --     end
+  -- }
   -- use{
   --     "tbabej/taskwiki",
   --     config = function()
   --         vim.g.taskwiki_markup_syntax = 'markdown'
   --     end
   -- }
-
-
-  -- use("vim-ruby/vim-ruby")
-  -- add new plugin
-  -- :so
-  -- :PackerSync
-
-end)
-
