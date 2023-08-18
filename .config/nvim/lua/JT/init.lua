@@ -15,6 +15,40 @@
 -- ░░░░░░░░░░
 
 require("JT.plugins")
+require("which-key").setup {
+  -- other which-key settings can go here
+}
+
+require("which-key").register({
+  ["<leader>"] = {
+    g = {
+      name = "Github",  -- optional group name for "a"
+      s = "Git Status"
+    },
+    p = {
+      name = "Telescope",
+      f = "Find File",
+      s = "Grep"
+    },
+    v = {
+      name = "CoPilot",
+      h = "CoPilot Help",
+      p = {
+        name = "Packer",
+      },
+    },
+    -- w = {
+    --   name = "VimWiki"
+    -- },
+    z = {
+      name = "Zoom",
+      z = "Zoom In",
+      Z = "Zoom Out"
+    },
+
+  },
+})
+
 require("JT.set")
 require("JT.remap")
 require("JT.lualine-config")
@@ -95,40 +129,3 @@ require'lspconfig'.sqlls.setup{
       return require'lspconfig'.util.root_pattern('.git')(fname) or require'lspconfig'.util.path.dirname(fname)
    end,
 }
-require("which-key").setup {
-  -- other which-key settings can go here
-}
-
-require("which-key").register({
-  ["<leader>"] = {
-    g = {
-      name = "Github",  -- optional group name for "a"
-      s = "Git Status"
-    },
-    a = {
-      name = "Harpoon - add file"
-    },
-    p = {
-      name = "Telescope",
-      f = "Find File",
-      s = "Grep"
-    },
-    v = {
-      name = "CoPilot",
-      h = "CoPilot Help",
-      p = {
-        name = "Packer",
-      },
-    },
-    w = {
-      name = "VimWiki"
-    },
-    z = {
-      name = "Zoom",
-      z = "Zoom In",
-      Z = "Zoom Out"
-    },
-
-  },
-})
-

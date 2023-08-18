@@ -15,11 +15,12 @@
   -- vim.keymap.set("n", "<C-f>", function() ui.nav_file(4) end),
 
 
+local r = require("utils.remaps")
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 require("harpoon").setup {
-  vim.keymap.set("n", "<leader>a", mark.add_file),
-  vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu),
+  r.map("n", "<leader>a", mark.add_file, "harpoon: add file"),
+  r.map("n", "<C-e>", ui.toggle_quick_menu, "harpoon: toggle quick menu"),
 }
 
 -- return {

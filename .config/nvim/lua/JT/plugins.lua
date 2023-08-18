@@ -37,7 +37,7 @@ local plugins = {
     build = ":TSUpdate"
   },
   "nvim-treesitter/playground",
-    'ThePrimeagen/harpoon',
+  'ThePrimeagen/harpoon',
   -- {
   --   'ThePrimeagen/harpoon',
   --   config = function()

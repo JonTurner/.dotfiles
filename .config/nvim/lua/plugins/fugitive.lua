@@ -1,3 +1,7 @@
+-- local r = require("utils.remaps")
+-- r.map("n", "<leader>gs", vim.cmd.Git, { name = "Github", s = "Git Status" } )
+
+
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 
 local ThePrimeagen_Fugitive = vim.api.nvim_create_augroup("ThePrimeagen_Fugitive", {})
