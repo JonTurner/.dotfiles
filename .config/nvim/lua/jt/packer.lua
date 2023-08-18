@@ -22,13 +22,13 @@ return require('packer').startup(function(use)
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use({
-	  'rose-pine/neovim',
-	  as = 'rose-pine',
-	  config = function()
-		  vim.cmd('colorscheme rose-pine')
-	  end
-  })
+  -- use({
+	  -- 'rose-pine/neovim',
+	  -- as = 'rose-pine',
+	  -- config = function()
+		  -- vim.cmd('colorscheme rose-pine')
+	  -- end
+  -- })
   use({
       "folke/trouble.nvim",
       config = function()
@@ -87,7 +87,7 @@ return require('packer').startup(function(use)
   use("RRethy/nvim-treesitter-endwise") -- lua rewrite of tpope/vim-endwise
   use("tpope/vim-repeat")
   use("christoomey/vim-tmux-navigator")
-  -- use("morhetz/gruvbox")
+  use("ellisonleao/gruvbox.nvim")
   use("github/copilot.vim")
   use("AndrewRadev/ember_tools.vim")
   use("tpope/vim-projectionist")
