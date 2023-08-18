@@ -1,5 +1,4 @@
-### Stow
----
+# Stow
 
 The following creates a symlink for ~/.config
 ```bash
@@ -22,8 +21,8 @@ install `iterm2`
 ### Oh My Zsh
 install https://github.com/ohmyzsh/ohmyzsh
 
-install and configure `https://github.com/romkatv/powerlevel10k
-https://github.com/zsh-users/zsh-syntax-highlighting
-https://github.com/zsh-users/zsh-autosuggestions
-https://github.com/athityakumar/colorls
+- https://github.com/romkatv/powerlevel10k - install and configure
+- https://github.com/zsh-users/zsh-syntax-highlighting
+- https://github.com/zsh-users/zsh-autosuggestions
+- https://github.com/athityakumar/colorls
 
