@@ -1,2 +1,2 @@
-require("theprimeagen")
+require("jt")
 -- require("mason").setup()
