@@ -35,9 +35,10 @@ r.map("n", "<leader>f", vim.lsp.buf.format, "format current buffer")
 -- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 r.map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "search and replace")
-r.map("n", "<leader>x", "<cmd>!chmod +x %<CR>", "make file executable - chmod +x", { silent = true })
+-- r.map("n", "<leader>x", "<cmd>!chmod +x %<CR>", "make file executable - chmod +x", { silent = true })
 
 r.map("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/ThePrimeagen/packer.lua<CR>", "open packer")
+-- eandrju/cellular-automaton.nvim
 -- r.map("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>", "make it rain")
 
 vim.keymap.set("n", "<leader><leader>", function()

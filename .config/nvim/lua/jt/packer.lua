@@ -51,6 +51,7 @@ return require('packer').startup(function(use)
   use("theprimeagen/refactoring.nvim")
   use("mbbill/undotree")
   use("tpope/vim-fugitive")
+  use("tpope/vim-rhubarb")
   use("nvim-treesitter/nvim-treesitter-context");
   use {
 	  'VonHeikemen/lsp-zero.nvim',
@@ -74,16 +75,17 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'},
 	  }
   }
-
   use("folke/zen-mode.nvim")
-  use("eandrju/cellular-automaton.nvim")
-  -- masks config file values with ********
-  -- use("laytan/cloak.nvim")
-  -- configure here: after/plugin/cloak.lua
 
   -- Jon Turner cusomizations
   use("tpope/vim-rails")
-  use("tpope/vim-commentary")
+  -- use("tpope/vim-commentary")
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
   use("RRethy/nvim-treesitter-endwise") -- lua rewrite of tpope/vim-endwise
   use("tpope/vim-repeat")
   use("christoomey/vim-tmux-navigator")
@@ -103,7 +105,6 @@ return require('packer').startup(function(use)
           }
       end
   }
-  use("tpope/vim-rhubarb")
   use({
     "kylechui/nvim-surround",
     tag = "*", -- Use for stability; omit to use `main` branch for the latest features

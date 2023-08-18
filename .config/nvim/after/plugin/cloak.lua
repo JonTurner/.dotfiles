@@ -1,3 +1,5 @@
+-- masks config file values with ********
+-- use("laytan/cloak.nvim")
 -- require("cloak").setup({
 --   enabled = true,
 --   cloak_character = "*",
