@@ -94,6 +94,10 @@ return require('packer').startup(function(use)
   use("AndrewRadev/ember_tools.vim")
   use("tpope/vim-projectionist")
   use {
+    'stevearc/oil.nvim',
+    config = function() require('oil').setup() end
+  }
+  use {
       "folke/which-key.nvim",
       config = function()
           vim.o.timeout = true
