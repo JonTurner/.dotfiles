@@ -84,29 +84,29 @@ require("which-key").setup {
 require("which-key").register({
   ["<leader>"] = {
     g = {
-      name = "Github",  -- optional group name for "a"
-      s = "Git Status"
+      name = "[G]ithub",  -- optional group name for "a"
+      s = "Git [S]tatus"
     },
     a = {
-      name = "Harpoon - add file"
+      name = "[a]dd file Harpoon"
     },
     p = {
       name = "Telescope",
-      f = "Find File",
+      f = "[F]ind File",
       s = "Grep"
     },
     v = {
       name = "CoPilot",
-      h = "CoPilot Help",
+      h = "CoPilot [H]elp",
       p = {
-        name = "Packer",
+        name = "[P]acker",
       },
     },
-    w = {
-      name = "VimWiki"
-    },
+    -- w = {
+    --   name = "VimWiki"
+    -- },
     z = {
-      name = "Zoom",
+      name = "[Z]oom",
       z = "Zoom In",
       Z = "Zoom Out"
     },
