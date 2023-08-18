@@ -139,6 +139,17 @@ return require('packer').startup(function(use)
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
+  use {
+  'pwntester/octo.nvim',
+  requires = {
+    'nvim-lua/plenary.nvim',
+    'nvim-telescope/telescope.nvim',
+    'nvim-tree/nvim-web-devicons',
+  },
+  -- config = function ()
+  --   require"octo".setup()
+  -- end
+}
 
   -- use("vim-ruby/vim-ruby")
   -- Automatically set up your configuration after cloning packer.nvim
@@ -197,3 +208,37 @@ end)
   --         vim.g.taskwiki_markup_syntax = 'markdown'
   --     end
   -- }
+  --
+  --
+  --
+  -- https://www.reddit.com/r/neovim/comments/vbxya0/anyone_here_using_neovim_for_ruby_on_rails/
+  -- 20 upvotes!
+  -- I mostly use solargraph with native lsp and rubocop via formatter.nvim (I have been using null-ls for a while, but honestly I prefer having it separated from lsp).
+  --
+  -- The builtin LSP works well with solargraph to provide autocompletion.
+
+-- You can extend the default configuration for the language using a filetype plugin. Here's an example:
+--
+-- " In after/ftplugin/ruby.vim to work with predicate method names
+-- setlocal iskeyword+=?
+-- Tim Pope has many great plugins that work well for Ruby development:
+--
+-- tpope/vim-bundler
+--
+-- tpope/vim-rails
+--
+-- You can setup debugger for ruby following https://github.com/suketa/nvim-dap-ruby (personally I don't use it).
+--
+-- You can use janko/vim-test to run your tests.
+--
+---------------------------------------------
+--I use the built-in LSP feature of neovim.
+--
+-- I trigger the `vim.lsp.buf.formatting_sync` function from an `autocmd` in case the formatting is a capability of the LSP server.
+--
+-- Solargraph supports formatting using rubocop.
+--
+-- I don't use null-ls to format Ruby code.
+--
+--
+-- Ruby Focused dotfiles(author claims): https://github.com/prdanelli/dotfiles
