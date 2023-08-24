@@ -163,7 +163,22 @@ alias nvim="stty stop '' -ixoff; nvim"
 #delete merged branches
 alias gprune="git branch --merged | grep -v '\*' | xargs -n 1 git branch -d"
 alias gpt="git push origin --tags"
+alias glast="git for-each-ref --sort=-committerdate --count=10 --format='%(refname:short)' refs/heads/"
 
+# dev status
+function ds() {
+  ps aux | grep -v 'bin/puma-dev\|grep' | grep 'ember\|node\|puma\|ruby\|chromedriver'
+}
+
+# dev kill
+# function dk() {
+#   kill -9 $(pgrep ember)
+#   kill -9 $(pgrep node)
+#   for pid in $(pgrep "puma-dev-"); do kill -9 $pid; done
+#   bin/spring stop > /dev/null 2>&1
+#   killall chromedriver > /dev/null 2>&1
+#   rm -rf tmp/ember-cli frontend/{tmp,dist}
+# }
 
 # https://github.com/zsh-users/zsh-autosuggestions
 bindkey '^ ' autosuggest-execute
@@ -221,6 +236,10 @@ function def()
   alias "$1" 2>/dev/null
   which -a "$1" 2>/dev/null
   declare -f "$1" 2>/dev/null
+}
+function piv()
+{
+  `open https://www.pivotaltracker.com/story/show/$1`
 }
 
 #ff() {
