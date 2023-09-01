@@ -41,7 +41,8 @@ function X.map(type, input, output, description, additional_options)
 end
 
 function X.noremap(type, input, output, description, additional_options)
-	local options = { remap = false }
+	local options = { noremap = true }
+	-- local options = { remap = false }
 	if additional_options then
 		options = vim.tbl_deep_extend("force", options, additional_options)
 	end

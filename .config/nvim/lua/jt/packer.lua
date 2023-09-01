@@ -97,6 +97,7 @@ return require('packer').startup(function(use)
     'stevearc/oil.nvim',
     config = function() require('oil').setup() end
   }
+  use("ludovicchabant/vim-gutentags")
   use {
       "folke/which-key.nvim",
       config = function()
@@ -145,7 +146,7 @@ return require('packer').startup(function(use)
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope.nvim',
     'nvim-tree/nvim-web-devicons',
-  },
+  }
   -- config = function ()
   --   require"octo".setup()
   -- end

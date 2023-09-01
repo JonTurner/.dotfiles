@@ -127,3 +127,4 @@ require("oil").setup({
 
 local r = require("utils.remaps")
 r.map("n", "-", vim.cmd.Ex, "Open parent directory")
+-- r.noremap("n", "<C-h>", "<C-W>h", "move to window left")
