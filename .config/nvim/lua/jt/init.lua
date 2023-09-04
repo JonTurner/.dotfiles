@@ -92,7 +92,17 @@ require("which-key").register({
     },
     p = {
       name = "Telescope",
+      a = "[A]uto commands",
       f = "[F]ind File",
+      g = {
+        name = "[G]it",
+        b = "[B]ranches",
+        c = "[C]ommits",
+        s = "[S]tatus",
+      },
+      b = "[B]uffers",
+      m = "[M]marks",
+      r = "[R]egesters",
       s = "Grep"
     },
     v = {
