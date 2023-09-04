@@ -15,6 +15,7 @@
 -- ░░░░░░░░░░
 
 require("jt.packer")
+require("jt.open_pivotal_story")
 require("jt.set")
 require("jt.remap")
 require("jt.lualine-config")

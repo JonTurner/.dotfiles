@@ -83,18 +83,25 @@ r.map({"n", "v"}, "L", "<End>", "Move to the end of the line")
 
 
 
--- require("open_pivotal_story")
+require("jt.open_pivotal_story")
 -- vim.api.nvim_exec([[
 --   augroup FugitiveBlameGroup
 --     autocmd!
---     autocmd FileType fugitiveblame nnoremap <buffer> <localleader>gpv :lua require('open_pivotal_story').OpenPivotalStory(vim.fn.expand("<cword>"))<cr>
+--     autocmd FileType fugitiveblame nnoremap <buffer> <localleader>gpv :lua require('jt.open_pivotal_story').OpenPivotalStory(vim.fn.expand("<cword>"))<cr>
 --   augroup END
 -- ]], false)
+
+vim.cmd([[
+  augroup fugitive_ext
+    autocmd!
+    autocmd FileType fugitiveblame nnoremap <buffer> <leader>gpv :lua require('jt.open_pivotal_story').OpenPivotalStory(vim.fn.expand("<cword>"))<cr>
+  augroup END
+]])
 
 -- vim.cmd([[
 --   augroup fugitive_ext
 --     autocmd!
---     autocmd FileType fugitiveblame nnoremap <buffer> <localleader>gpv :lua require('open_pivotal_story').OpenPivotalStory(vim.fn.expand("<cword>"))<cr>
+--     autocmd FileType fugitiveblame nnoremap <buffer> <localleader>gpv :lua require('jt.open_pivotal_story').OpenPivotalStory(vim.fn.expand("<cword>"))<cr>
 --   augroup END
 -- ]])
-
+--

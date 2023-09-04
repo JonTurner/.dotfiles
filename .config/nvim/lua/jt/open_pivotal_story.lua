@@ -9,8 +9,12 @@ function M.OpenPivotalStory(sha)
 
     local url = 'https://www.pivotaltracker.com/story/show/' .. pivotal_story_id
 
-    vim.api.nvim_exec('call netrw#BrowseX("' .. url .. '", 0)', false)
+    vim.fn.setreg('+', url)
+    -- vim.api.nvim_exec('call netrw#BrowseX("' .. url .. '", 0)', false)
 end
 
 return M
+
+
+-- git show -q --oneline 12d3220417e2f010213fbae31d58df5084f0e5d8 | tail -n1 | awk '{print $2}' | sed 's/[^0-9]*//g'
 
