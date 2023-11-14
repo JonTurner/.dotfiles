@@ -18,7 +18,7 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
+	  'nvim-telescope/telescope.nvim', tag = '0.1.4',
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
@@ -141,16 +141,18 @@ return require('packer').startup(function(use)
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
   use {
-  'pwntester/octo.nvim',
-  requires = {
-    'nvim-lua/plenary.nvim',
-    'nvim-telescope/telescope.nvim',
-    'nvim-tree/nvim-web-devicons',
+    'pwntester/octo.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'nvim-tree/nvim-web-devicons',
+    }
+    -- config = function ()
+      --   require"octo".setup()
+      -- end
   }
-  -- config = function ()
-  --   require"octo".setup()
-  -- end
-}
+  use {"ellisonleao/glow.nvim" }
+  -- use {"ellisonleao/glow.nvim", branch='lnc3l0t:advanced_window', config = function() require("glow").setup() end}
 
   -- use("vim-ruby/vim-ruby")
   -- Automatically set up your configuration after cloning packer.nvim

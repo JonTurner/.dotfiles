@@ -1,6 +1,7 @@
 # Stow
 
 The following creates a symlink for ~/.config
+Run after adding new files to .config
 ```bash
 cd .dotfiles
 stow -t ~/.config .config
@@ -25,4 +26,14 @@ install https://github.com/ohmyzsh/ohmyzsh
 - https://github.com/zsh-users/zsh-syntax-highlighting
 - https://github.com/zsh-users/zsh-autosuggestions
 - https://github.com/athityakumar/colorls
+
+
+# Global Gitignore
+```bash
+git config --global core.excludesfile ~/.config/git/ignore
+```
+confirm setting
+```bash
+git config --global core.excludesFile
+```
 

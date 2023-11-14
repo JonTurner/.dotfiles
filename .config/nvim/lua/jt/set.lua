@@ -33,8 +33,8 @@ vim.opt.splitbelow = true -- Put new windows below current
 vim.opt.splitright = true -- Put new windows right of the current
 
 -- vimwiki/vimwiki settings
-vim.cmd('filetype plugin on')
-vim.cmd('syntax on')
+-- vim.cmd('filetype plugin on')
+-- vim.cmd('syntax on')
 
 -- no folding
 vim.wo.foldenable = false
@@ -65,3 +65,5 @@ vim.opt.ignorecase = true -- Ignore casing when searching for a word
 -- opt.winminwidth = 5 -- Minimum window width
 -- opt.iskeyword:append("-") -- Make Neovim recognise dash-seperated words as a single word
 -- opt.cursorline = true -- Configure Neovim to highlight the current location of the cursor
+-- " Don't redraw while executing macros (good performance config)
+-- set lazyredraw
