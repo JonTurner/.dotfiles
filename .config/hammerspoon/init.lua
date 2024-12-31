@@ -1,53 +1,58 @@
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "W", function()
-  hs.alert.show("Hello World fooooooo112233221323445o!")
+  hs.alert.show("Hello World fooooooo1!")
 end)
 
--- -- We'll use a window filter to detect when Slack gains or loses focus
--- local slackFilter = hs.window.filter.new(false):setAppFilter("Slack")
---
--- -- We'll keep a reference to our hotkey so we can enable/disable it
--- local slackHotkey
---
--- -- Enable the hotkey when Slack is focused
--- slackFilter:subscribe(hs.window.filter.windowFocused, function()
---   slackHotkey = hs.hotkey.bind({"cmd"}, "E", function()
---     -- When the user presses Ctrl+Shift+A, Hammerspoon will fire Cmd+Shift+K in Slack
---     hs.eventtap.keyStroke({"cmd", "shift"}, "C")
---   end)
--- end)
---
--- -- Disable the hotkey when Slack is unfocused
--- slackFilter:subscribe(hs.window.filter.windowUnfocused, function()
---   if slackHotkey then
---     slackHotkey:disable()
---     slackHotkey:delete()
---     slackHotkey = nil
---   end
--- end)
 
+--------------------------------------
+-- Commonly Used "Listen" Shortcuts --
+--------------------------------------
+-- Press cmd/ctrl + option/shift + 0 to create text.
 
+-- local H1 = {{"cmd", "option"}, "1"} -- Asana,
+-- local H1 = {{"cmd", "option", "shift", "ctrl"}, "1"} -- Asana,
+-- local H1 = {{"cmd", "alt", "shift", "ctrl"}, "1"} -- Asana,
+local H1 = {{"cmd", "option"}, "1"} -- Asana,
+-- local H2 = {{"cmd", "option"}, "2"}
+-- local H3 = {{"cmd", "option"}, "3"}
+-- local CHECKBOX = {{"cmd", "option"}, "4"}
+-- local BULLET_LIST = {{"cmd", "option"}, "5"}
+-- local NUMBERED_LIST = {{"cmd", "option"}, "6"}
+-- local TOGGLE_LIST = {{"cmd", "option"}, "7"}
+-- local CODE_BLOCK = {{"cmd", "option"}, "8"}
+-- local COMMENT = {{"cmd", "shift"}, "M"}
+-- local STRIKETHROUGH = {{"cmd", "shift"}, "S"}
+
+local INLINE_CODE_BLOCK = {{"cmd"}, "E"}       -- for example, a shortcut to trigger an inline code block
+local COPY_URL = {{"cmd"}, "L"}
 
 -- Sample config table. Each key is an application name, and the value is a list of shortcuts.
 -- "listenShortcut" is the keystroke you want Hammerspoon to listen for;
 -- "overwriteShortcut" is what Hammerspoon sends to the app.
+-- Add more as needed…
+
 local shortcutsConfig = {
   Slack = {
     {
-      name = "inline code block",
-      listenShortcut = {{"cmd"}, "E"},          -- e.g. Cmd+E
-      overwriteShortcut = {{"cmd", "shift"}, "C"} -- e.g. Cmd+Shift+C
+      listenShortcut = INLINE_CODE_BLOCK,
+      overwriteShortcut = {{"cmd", "shift"}, "C"}
     },
-    -- Add more Slack shortcuts here...
   },
-  Safari = {
+  Linear = {
     {
-      name = "some Safari shortcut",
-      listenShortcut = {{"ctrl", "shift"}, "S"},
-      overwriteShortcut = {{"cmd"}, "R"}
-    }
-    -- Add more Safari shortcuts here...
+      listenShortcut = COPY_URL,
+      overwriteShortcut = {{"cmd", "shift"}, ","}
+    },
+    {
+      listenShortcut = H1,
+      overwriteShortcut = {{"ctrl", "shift"}, "1"}
+    },
   },
-  -- Add other apps with their shortcuts here...
+  Asana = {
+    {
+      listenShortcut = INLINE_CODE_BLOCK,
+      overwriteShortcut = {{"cmd", "shift"}, "M"}
+    },
+  },
 }
 
 -- For each app in the table, we create a window filter that “turns on” hotkeys
@@ -65,6 +70,7 @@ for appName, shortcuts in pairs(shortcutsConfig) do
 
       -- Bind the hotkey
       local h = hs.hotkey.bind(listenMods, listenKey, function()
+        -- hs.timer.usleep(50000)  -- 50ms delay
         hs.eventtap.keyStroke(sendMods, sendKey)
       end)
       table.insert(hotkeys, h)
