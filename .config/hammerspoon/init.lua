@@ -35,6 +35,12 @@ local CHECKBOX = {HYPER_KEY, "4"}  -- except: Slack,Asana
 local STRIKETHROUGH = {HYPER_KEY_NO_SHIFT, "S"} -- :all_applications!!!  (left out shift - so it doesn't conflict with Launch Slack shortcut)
 local BULLET_LIST ={{"cmd", "shift"}, "8"} -- -- :all_applications!!!
 local CODE_BLOCK = {HYPER_KEY, "8"} -- except: reflect
+local NUMBERED_LIST = {HYPER_KEY, "6"}
+-- Notion - {{"cmd", "alt"}, "6"}
+-- Slack - {{"cmd", "shift"}, "7"}
+-- Asana - {{"cmd", "shift"}, "7"}
+-- Linear - {{"cmd", "shift"}, "9"}
+-- Reflect -  {{"cmd", "shift"}, "7"}
 
 
 -- Sample config table. Each key is an application name, and the value is a list of shortcuts.
@@ -72,6 +78,10 @@ local shortcutsConfig = {
       listenShortcut = CODE_BLOCK,
       overwriteShortcut = {{"cmd", "alt"}, "8", 2}
     },
+    {
+      listenShortcut = NUMBERED_LIST,
+      overwriteShortcut = {{"cmd", "alt"}, "6", 2}
+    },
   },
   Slack = { -- does not support H1,H2,H3
     {
@@ -85,6 +95,10 @@ local shortcutsConfig = {
     {
       listenShortcut = CODE_BLOCK,
       overwriteShortcut = {{"cmd", "alt", "shift"}, "C"}
+    },
+    {
+      listenShortcut = NUMBERED_LIST,
+      overwriteShortcut = {{"cmd", "shift"}, "7"}
     },
   },
   Linear = {
@@ -116,6 +130,10 @@ local shortcutsConfig = {
       listenShortcut = CODE_BLOCK,
       overwriteShortcut = {{"cmd", "shift"}, "\\"}
     },
+    {
+      listenShortcut = NUMBERED_LIST,
+      overwriteShortcut = {{"cmd", "shift"}, "9"}
+    },
   },
   Asana = {
     {
@@ -138,6 +156,10 @@ local shortcutsConfig = {
       listenShortcut = CODE_BLOCK,
       overwriteShortcut = {{"cmd", "shift"}, "C"}
     },
+    {
+      listenShortcut = NUMBERED_LIST,
+      overwriteShortcut = {{"cmd", "shift"}, "7"}
+    },
   },
   Reflect = {
     {
@@ -159,6 +181,10 @@ local shortcutsConfig = {
     {
       listenShortcut = STRIKETHROUGH,
       overwriteShortcut = {{"cmd", "shift"}, "X"}
+    },
+    {
+      listenShortcut = NUMBERED_LIST,
+      overwriteShortcut = {{"cmd", "shift"}, "7"}
     },
     -- numbered cmd shift 7
     -- Task - cmd shift 9
