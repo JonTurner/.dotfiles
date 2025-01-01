@@ -16,10 +16,12 @@ end)
 -- local CHECKBOX = {{"cmd", "alt"}, "4"}
 -- local BULLET_LIST = {{"cmd", "alt"}, "5"}
 -- local NUMBERED_LIST = {{"cmd", "alt"}, "6"}
--- local TOGGLE_LIST = {{"cmd", "alt"}, "7"}
+-- local TOGGLE_LIST = {{"cmd", "alt"}, "7"} - creates an accordian - unique to Notion
 -- local CODE_BLOCK = {{"cmd", "alt"}, "8"}
 -- local COMMENT = {{"cmd", "shift"}, "M"}
 -- local STRIKETHROUGH = {{"cmd", "shift"}, "S"}
+
+-- Try to do Highlighting!
 
 -- notion shortcuts
 local INLINE_CODE_BLOCK = {{"cmd"}, "E"} -- except: Reflect
@@ -30,9 +32,9 @@ local H1 = {HYPER_KEY, "1"} -- except: Slack
 local H2 = {HYPER_KEY, "2"} -- except: Slack
 local H3 = {HYPER_KEY, "3"} -- except: Slack,Asana
 local CHECKBOX = {HYPER_KEY, "4"}  -- except: Slack,Asana
--- local STRIKETHROUGH = {{"cmd", "shift"}, "S"}
--- local STRIKETHROUGH = {HYPER_KEY, "D"} this works
-local STRIKETHROUGH = {HYPER_KEY_NO_SHIFT, "S"} -- :all_applications!!!
+local STRIKETHROUGH = {HYPER_KEY_NO_SHIFT, "S"} -- :all_applications!!!  (left out shift - so it doesn't conflict with Launch Slack shortcut)
+local BULLET_LIST ={{"cmd", "shift"}, "8"} -- -- :all_applications!!!
+local CODE_BLOCK = {HYPER_KEY, "8"} -- except: reflect
 
 
 -- Sample config table. Each key is an application name, and the value is a list of shortcuts.
@@ -62,6 +64,14 @@ local shortcutsConfig = {
       listenShortcut = STRIKETHROUGH,
       overwriteShortcut = {{"cmd", "shift"}, "S", 2}
     },
+    {
+      listenShortcut = BULLET_LIST,
+      overwriteShortcut = {{"cmd", "alt"}, "5", 2}
+    },
+    {
+      listenShortcut = CODE_BLOCK,
+      overwriteShortcut = {{"cmd", "alt"}, "8", 2}
+    },
   },
   Slack = { -- does not support H1,H2,H3
     {
@@ -71,6 +81,10 @@ local shortcutsConfig = {
     {
       listenShortcut = STRIKETHROUGH,
       overwriteShortcut = {{"cmd", "shift"}, "X"}
+    },
+    {
+      listenShortcut = CODE_BLOCK,
+      overwriteShortcut = {{"cmd", "alt", "shift"}, "C"}
     },
   },
   Linear = {
@@ -98,6 +112,10 @@ local shortcutsConfig = {
       listenShortcut = STRIKETHROUGH,
       overwriteShortcut = {{"cmd"}, "S", 2}
     },
+    {
+      listenShortcut = CODE_BLOCK,
+      overwriteShortcut = {{"cmd", "shift"}, "\\"}
+    },
   },
   Asana = {
     {
@@ -115,6 +133,10 @@ local shortcutsConfig = {
     {
       listenShortcut = STRIKETHROUGH,
       overwriteShortcut = {{"cmd", "shift"}, "X"}
+    },
+    {
+      listenShortcut = CODE_BLOCK,
+      overwriteShortcut = {{"cmd", "shift"}, "C"}
     },
   },
   Reflect = {
@@ -138,6 +160,8 @@ local shortcutsConfig = {
       listenShortcut = STRIKETHROUGH,
       overwriteShortcut = {{"cmd", "shift"}, "X"}
     },
+    -- numbered cmd shift 7
+    -- Task - cmd shift 9
   },
 }
 
