@@ -29,10 +29,9 @@ local COPY_URL = {{"cmd"}, "L"}
 -- local H3 = {{"cmd", "alt", "shift", "ctrl"}, "6"} -- Asana,
 -- local CHECKBOX = {{"cmd", "alt", "shift", "ctrl"}, "8"}
 -- made up shortcuts to hopefully avoid collisions
-local H1 = {{"cmd", "alt", "shift", "ctrl"}, "1"} -- Asana,
--- local H1 = {{"cmd", "ctrl"}, "4"} -- Asana,
-local H2 = {{"cmd", "ctrl"}, "5"} -- Asana,
-local H3 = {{"cmd", "ctrl"}, "6"} -- Asana,
+local H1 = {HYPER_KEY, "1"} -- Asana,
+local H2 = {HYPER_KEY, "2"} -- Asana,
+local H3 = {HYPER_KEY, "3"} -- Asana does not support
 local CHECKBOX = {HYPER_KEY, "8"}
 -- local STRIKETHROUGH = {{"cmd", "shift"}, "S"}
 -- local STRIKETHROUGH = {HYPER_KEY, "D"} this works
@@ -52,11 +51,11 @@ local shortcutsConfig = {
     },
     {
       listenShortcut = H2,
-      overwriteShortcut = {{"cmd", "alt"}, "2"}
+      overwriteShortcut = {{"cmd", "alt"}, "2", 2}
     },
     {
       listenShortcut = H3,
-      overwriteShortcut = {{"cmd", "alt"}, "3"}
+      overwriteShortcut = {{"cmd", "alt"}, "3", 2}
     },
   },
   Slack = { -- does not support H1,H2,H3
@@ -76,15 +75,11 @@ local shortcutsConfig = {
     },
     {
       listenShortcut = H2,
-      overwriteShortcut = {{"ctrl", "shift"}, "2"}
+      overwriteShortcut = {{"ctrl", "shift"}, "2", 2}
     },
     {
       listenShortcut = H3,
-      overwriteShortcut = {{"ctrl", "shift"}, "3"}
-    },
-    {
-      listenShortcut = H3,
-      overwriteShortcut = {{"ctrl", "shift"}, "3"}
+      overwriteShortcut = {{"ctrl", "shift"}, "3", 2}
     },
     {
       listenShortcut = CHECKBOX,
@@ -102,7 +97,11 @@ local shortcutsConfig = {
     },
     {
       listenShortcut = H1,
-      overwriteShortcut = {{"cmd", "alt"}, "1"}
+      overwriteShortcut = {{"cmd", "alt"}, "1", 2}
+    },
+    {
+      listenShortcut = H2,
+      overwriteShortcut = {{"cmd", "alt"}, "2", 2}
     },
   },
 }
