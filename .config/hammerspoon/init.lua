@@ -34,7 +34,8 @@ local H2 = {{"cmd", "ctrl"}, "5"} -- Asana,
 local H3 = {{"cmd", "ctrl"}, "6"} -- Asana,
 local CHECKBOX = {HYPER_KEY, "8"}
 -- local STRIKETHROUGH = {{"cmd", "shift"}, "S"}
-local STRIKETHROUGH = {HYPER_KEY, "D"}
+-- local STRIKETHROUGH = {HYPER_KEY, "D"} this works
+local STRIKETHROUGH = {HYPER_KEY, "S"}
 
 
 -- Sample config table. Each key is an application name, and the value is a list of shortcuts.
@@ -116,9 +117,11 @@ for appName, shortcuts in pairs(shortcutsConfig) do
 
       -- Bind the hotkey
       local h = hs.hotkey.bind(listenMods, listenKey, function()
-        -- hs.timer.usleep(50000)  -- 50ms delay
-        hs.alert.show("bind -> ")
+        hs.timer.usleep(50000)  -- 50ms delay
+        -- hs.alert.show("bind -> " .. listenKey)
+        print("bind -> " .. listenKey)
         hs.eventtap.keyStroke(sendMods, sendKey)
+        -- hs.eventtap.keyStroke(sendMods, sendKey)
       end)
       table.insert(hotkeys, h)
     end
