@@ -1,4 +1,5 @@
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "W", function()
+local HYPER_KEY = {"cmd", "alt", "shift", "ctrl"}
+hs.hotkey.bind(HYPER_KEY, "W", function()
   hs.alert.show("Hello World fooooooo1!")
 end)
 
@@ -19,6 +20,7 @@ end)
 -- local COMMENT = {{"cmd", "shift"}, "M"}
 -- local STRIKETHROUGH = {{"cmd", "shift"}, "S"}
 
+local HYPER_KEY_NO_SHIFT = {"cmd", "alt", "ctrl"}
 local INLINE_CODE_BLOCK = {{"cmd"}, "E"}       -- for example, a shortcut to trigger an inline code block
 local COPY_URL = {{"cmd"}, "L"}
 -- made up shortcuts to hopefully avoid collisions
@@ -30,7 +32,9 @@ local COPY_URL = {{"cmd"}, "L"}
 local H1 = {{"cmd", "ctrl"}, "4"} -- Asana,
 local H2 = {{"cmd", "ctrl"}, "5"} -- Asana,
 local H3 = {{"cmd", "ctrl"}, "6"} -- Asana,
-local CHECKBOX = {{"cmd", "alt", "shift", "ctrl"}, "8"}
+local CHECKBOX = {HYPER_KEY, "8"}
+-- local STRIKETHROUGH = {{"cmd", "shift"}, "S"}
+local STRIKETHROUGH = {HYPER_KEY, "D"}
 
 
 -- Sample config table. Each key is an application name, and the value is a list of shortcuts.
@@ -84,6 +88,10 @@ local shortcutsConfig = {
       listenShortcut = CHECKBOX,
       overwriteShortcut = {{"cmd", "shift"}, "7"}
     },
+    {
+      listenShortcut = STRIKETHROUGH,
+      overwriteShortcut = {{"cmd"}, "S"}
+    },
   },
   Asana = {
     {
@@ -109,6 +117,7 @@ for appName, shortcuts in pairs(shortcutsConfig) do
       -- Bind the hotkey
       local h = hs.hotkey.bind(listenMods, listenKey, function()
         -- hs.timer.usleep(50000)  -- 50ms delay
+        hs.alert.show("bind -> ")
         hs.eventtap.keyStroke(sendMods, sendKey)
       end)
       table.insert(hotkeys, h)
