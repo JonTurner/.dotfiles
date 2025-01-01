@@ -29,7 +29,8 @@ local COPY_URL = {{"cmd"}, "L"}
 -- local H3 = {{"cmd", "alt", "shift", "ctrl"}, "6"} -- Asana,
 -- local CHECKBOX = {{"cmd", "alt", "shift", "ctrl"}, "8"}
 -- made up shortcuts to hopefully avoid collisions
-local H1 = {{"cmd", "ctrl"}, "4"} -- Asana,
+local H1 = {{"cmd", "alt", "shift", "ctrl"}, "1"} -- Asana,
+-- local H1 = {{"cmd", "ctrl"}, "4"} -- Asana,
 local H2 = {{"cmd", "ctrl"}, "5"} -- Asana,
 local H3 = {{"cmd", "ctrl"}, "6"} -- Asana,
 local CHECKBOX = {HYPER_KEY, "8"}
@@ -47,7 +48,7 @@ local shortcutsConfig = {
   Notion ={
     {
       listenShortcut = H1,
-      overwriteShortcut = {{"cmd", "alt"}, "1"}
+      overwriteShortcut = {{"cmd", "alt"}, "1", 2}
     },
     {
       listenShortcut = H2,
@@ -71,7 +72,7 @@ local shortcutsConfig = {
     },
     {
       listenShortcut = H1,
-      overwriteShortcut = {{"ctrl", "shift"}, "1"}
+      overwriteShortcut = {{"ctrl", "shift"}, "1", 2}
     },
     {
       listenShortcut = H2,
@@ -91,13 +92,17 @@ local shortcutsConfig = {
     },
     {
       listenShortcut = STRIKETHROUGH,
-      overwriteShortcut = {{"cmd"}, "S"}
+      overwriteShortcut = {{"cmd"}, "S", 2}
     },
   },
   Asana = {
     {
       listenShortcut = INLINE_CODE_BLOCK,
       overwriteShortcut = {{"cmd", "shift"}, "M"}
+    },
+    {
+      listenShortcut = H1,
+      overwriteShortcut = {{"cmd", "alt"}, "1"}
     },
   },
 }
@@ -113,15 +118,17 @@ for appName, shortcuts in pairs(shortcutsConfig) do
   appFilter:subscribe(hs.window.filter.windowFocused, function()
     for _, shortcutItem in ipairs(shortcuts) do
       local listenMods, listenKey = table.unpack(shortcutItem.listenShortcut)
-      local sendMods, sendKey = table.unpack(shortcutItem.overwriteShortcut)
+      local sendMods, sendKey, times = table.unpack(shortcutItem.overwriteShortcut)
+      times = times or 1
 
       -- Bind the hotkey
       local h = hs.hotkey.bind(listenMods, listenKey, function()
         hs.timer.usleep(50000)  -- 50ms delay
         -- hs.alert.show("bind -> " .. listenKey)
-        print("bind -> " .. listenKey)
-        hs.eventtap.keyStroke(sendMods, sendKey)
-        -- hs.eventtap.keyStroke(sendMods, sendKey)
+        for i = 1, times do
+          print("bind -> " .. listenKey)
+          hs.eventtap.keyStroke(sendMods, sendKey)
+        end
       end)
       table.insert(hotkeys, h)
     end
