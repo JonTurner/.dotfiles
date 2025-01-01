@@ -1,4 +1,5 @@
 local HYPER_KEY = {"cmd", "alt", "shift", "ctrl"}
+local HYPER_KEY_NO_SHIFT = {"cmd", "alt", "ctrl"}
 hs.hotkey.bind(HYPER_KEY, "W", function()
   hs.alert.show("Hello World fooooooo1!")
 end)
@@ -8,7 +9,7 @@ end)
 -- Commonly Used "Listen" Shortcuts --
 --------------------------------------
 -- Press cmd/ctrl + option/shift + 0 to create text.
-
+-- Notion shortcuts
 -- local H1 = {{"cmd", "alt"}, "1"} -- Asana,
 -- local H2 = {{"cmd", "alt"}, "2"}
 -- local H3 = {{"cmd", "alt"}, "3"}
@@ -20,22 +21,18 @@ end)
 -- local COMMENT = {{"cmd", "shift"}, "M"}
 -- local STRIKETHROUGH = {{"cmd", "shift"}, "S"}
 
-local HYPER_KEY_NO_SHIFT = {"cmd", "alt", "ctrl"}
-local INLINE_CODE_BLOCK = {{"cmd"}, "E"}       -- for example, a shortcut to trigger an inline code block
-local COPY_URL = {{"cmd"}, "L"}
+-- notion shortcuts
+local INLINE_CODE_BLOCK = {{"cmd"}, "E"} -- except: Reflect
+local COPY_URL = {{"cmd"}, "L"} -- only: Notion, Linear    except: Reflect, Slack, Asana
+
 -- made up shortcuts to hopefully avoid collisions
--- local H1 = {{"cmd", "alt", "shift", "ctrl"}, "4"} -- Asana,
--- local H2 = {{"cmd", "alt", "shift", "ctrl"}, "5"} -- Asana,
--- local H3 = {{"cmd", "alt", "shift", "ctrl"}, "6"} -- Asana,
--- local CHECKBOX = {{"cmd", "alt", "shift", "ctrl"}, "8"}
--- made up shortcuts to hopefully avoid collisions
-local H1 = {HYPER_KEY, "1"} -- Asana,
-local H2 = {HYPER_KEY, "2"} -- Asana,
-local H3 = {HYPER_KEY, "3"} -- Asana does not support
-local CHECKBOX = {HYPER_KEY, "8"}
+local H1 = {HYPER_KEY, "1"} -- except: Slack
+local H2 = {HYPER_KEY, "2"} -- except: Slack
+local H3 = {HYPER_KEY, "3"} -- except: Slack,Asana
+local CHECKBOX = {HYPER_KEY, "4"}  -- except: Slack,Asana
 -- local STRIKETHROUGH = {{"cmd", "shift"}, "S"}
 -- local STRIKETHROUGH = {HYPER_KEY, "D"} this works
-local STRIKETHROUGH = {HYPER_KEY, "S"}
+local STRIKETHROUGH = {HYPER_KEY_NO_SHIFT, "S"} -- :all_applications!!!
 
 
 -- Sample config table. Each key is an application name, and the value is a list of shortcuts.
@@ -57,11 +54,23 @@ local shortcutsConfig = {
       listenShortcut = H3,
       overwriteShortcut = {{"cmd", "alt"}, "3", 2}
     },
+    {
+      listenShortcut = CHECKBOX,
+      overwriteShortcut = {{"cmd", "alt"}, "4", 2}
+    },
+    {
+      listenShortcut = STRIKETHROUGH,
+      overwriteShortcut = {{"cmd", "shift"}, "S", 2}
+    },
   },
   Slack = { -- does not support H1,H2,H3
     {
       listenShortcut = INLINE_CODE_BLOCK,
       overwriteShortcut = {{"cmd", "shift"}, "C"}
+    },
+    {
+      listenShortcut = STRIKETHROUGH,
+      overwriteShortcut = {{"cmd", "shift"}, "X"}
     },
   },
   Linear = {
@@ -102,6 +111,32 @@ local shortcutsConfig = {
     {
       listenShortcut = H2,
       overwriteShortcut = {{"cmd", "alt"}, "2", 2}
+    },
+    {
+      listenShortcut = STRIKETHROUGH,
+      overwriteShortcut = {{"cmd", "shift"}, "X"}
+    },
+  },
+  Reflect = {
+    {
+      listenShortcut = H1,
+      overwriteShortcut = {{"cmd", "alt"}, "1", 2}
+    },
+    {
+      listenShortcut = H2,
+      overwriteShortcut = {{"cmd", "alt"}, "2", 2}
+    },
+    {
+      listenShortcut = H3,
+      overwriteShortcut = {{"cmd", "alt"}, "3", 2}
+    },
+    {
+      listenShortcut = CHECKBOX,
+      overwriteShortcut = {{"cmd"}, "return"}
+    },
+    {
+      listenShortcut = STRIKETHROUGH,
+      overwriteShortcut = {{"cmd", "shift"}, "X"}
     },
   },
 }
