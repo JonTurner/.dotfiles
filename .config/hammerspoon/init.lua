@@ -18,14 +18,14 @@ end)
 -- local NUMBERED_LIST = {{"cmd", "alt"}, "6"}
 -- local TOGGLE_LIST = {{"cmd", "alt"}, "7"} - creates an accordian - unique to Notion
 -- local CODE_BLOCK = {{"cmd", "alt"}, "8"}
--- local COMMENT = {{"cmd", "shift"}, "M"}
+-- local COMMENT = {{"cmd", "shift"}, "M"} - for inline comment - Linear does not have inline comments..
 -- local STRIKETHROUGH = {{"cmd", "shift"}, "S"}
 
--- Try to do Highlighting!
 
 -- notion shortcuts
 local INLINE_CODE_BLOCK = {{"cmd"}, "E"} -- except: Reflect
 local COPY_URL = {{"cmd"}, "L"} -- only: Notion, Linear    except: Reflect, Slack, Asana
+-- google chrome and Firefox - cmd + L takes you to address bar w/ URL selected.  Just need cmd + C
 
 -- made up shortcuts to hopefully avoid collisions
 local H1 = {HYPER_KEY, "1"} -- except: Slack
@@ -36,11 +36,7 @@ local STRIKETHROUGH = {HYPER_KEY_NO_SHIFT, "S"} -- :all_applications!!!  (left o
 local BULLET_LIST ={{"cmd", "shift"}, "8"} -- -- :all_applications!!!
 local CODE_BLOCK = {HYPER_KEY, "8"} -- except: reflect
 local NUMBERED_LIST = {HYPER_KEY, "6"}
--- Notion - {{"cmd", "alt"}, "6"}
--- Slack - {{"cmd", "shift"}, "7"}
--- Asana - {{"cmd", "shift"}, "7"}
--- Linear - {{"cmd", "shift"}, "9"}
--- Reflect -  {{"cmd", "shift"}, "7"}
+-- local HIGHLIGHT = {{"cmd", "shift"}, "H"} - natively supported on Notion & Reflect (not supported: Slack, Asana, Linear)
 
 
 -- Sample config table. Each key is an application name, and the value is a list of shortcuts.
@@ -186,7 +182,6 @@ local shortcutsConfig = {
       listenShortcut = NUMBERED_LIST,
       overwriteShortcut = {{"cmd", "shift"}, "7"}
     },
-    -- numbered cmd shift 7
     -- Task - cmd shift 9
   },
 }
