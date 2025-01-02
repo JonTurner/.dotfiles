@@ -33,9 +33,9 @@ local H2 = {HYPER_KEY, "2"} -- except: Slack
 local H3 = {HYPER_KEY, "3"} -- except: Slack,Asana
 local CHECKBOX = {HYPER_KEY, "4"}  -- except: Slack,Asana
 local STRIKETHROUGH = {HYPER_KEY_NO_SHIFT, "S"} -- :all_applications!!!  (left out shift - so it doesn't conflict with Launch Slack shortcut)
-local BULLET_LIST ={{"cmd", "shift"}, "8"} -- -- :all_applications!!!
+local BULLET_LIST ={{"cmd", "shift"}, "8"} -- :all_applications!!!
 local CODE_BLOCK = {HYPER_KEY, "8"} -- except: reflect
-local NUMBERED_LIST = {HYPER_KEY, "6"}
+local NUMBERED_LIST = {HYPER_KEY, "6"} -- :all_applications!!!
 -- local HIGHLIGHT = {{"cmd", "shift"}, "H"} - natively supported on Notion & Reflect (not supported: Slack, Asana, Linear)
 
 
