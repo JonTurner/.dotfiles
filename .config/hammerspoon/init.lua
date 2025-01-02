@@ -47,7 +47,7 @@ local H2 = {HYPER_KEY, "2"} -- except: Slack
 local H3 = {HYPER_KEY, "3"} -- except: Slack,Asana
 local CHECKBOX = {HYPER_KEY, "4"}  -- except: Slack,Asana
 local STRIKETHROUGH = {HYPER_KEY_NO_SHIFT, "S"} -- :all_applications!!!  (left out shift - so it doesn't conflict with Launch Slack shortcut)
-local BULLET_LIST ={{"cmd", "shift"}, "8"} -- :all_applications!!!
+local BULLET_LIST ={HYPER_KEY_NO_SHIFT, "8"} -- :all_applications!!!
 local CODE_BLOCK = {HYPER_KEY, "8"} -- except: reflect
 local NUMBERED_LIST = {HYPER_KEY, "6"} -- :all_applications!!!
 -- local HIGHLIGHT = {{"cmd", "shift"}, "H"} - natively supported on Notion & Reflect (not supported: Slack, Asana, Linear)
@@ -63,6 +63,7 @@ local NOTION_NUMBERED_LIST = {{"cmd", "alt"}, "6", 2}
 
 local SLACK_INLINE_CODE_BLOCK = {{"cmd", "shift"}, "C"}
 local SLACK_STRIKETHROUGH = {{"cmd", "shift"}, "X"}
+local SLACK_BULLET_LIST ={{"cmd", "shift"}, "8", 2}
 local SLACK_CODE_BLOCK = {{"cmd", "alt", "shift"}, "C"}
 local SLACK_NUMBERED_LIST = {{"cmd", "shift"}, "7"}
 
@@ -72,6 +73,7 @@ local LINEAR_H2 = {{"ctrl", "shift"}, "2", 2}
 local LINEAR_H3 = {{"ctrl", "shift"}, "3", 2}
 local LINEAR_CHECKBOX = {{"cmd", "shift"}, "7"}
 local LINEAR_STRIKETHROUGH = {{"cmd"}, "S", 2}
+local LINEAR_BULLET_LIST ={{"cmd", "shift"}, "8"}
 local LINEAR_CODE_BLOCK = {{"cmd", "shift"}, "\\"}
 local LINEAR_NUMBERED_LIST = {{"cmd", "shift"}, "9"}
 
@@ -79,6 +81,7 @@ local ASANA_INLINE_CODE_BLOCK = {{"cmd", "shift"}, "M"}
 local ASANA_H1 = {{"cmd", "alt"}, "1", 2}
 local ASANA_H2 = {{"cmd", "alt"}, "2", 2}
 local ASANA_STRIKETHROUGH = {{"cmd", "shift"}, "X"}
+local ASANA_BULLET_LIST ={{"cmd", "shift"}, "8", 2}
 local ASANA_CODE_BLOCK = {{"cmd", "shift"}, "C"}
 local ASANA_NUMBERED_LIST = {{"cmd", "shift"}, "7"}
 
@@ -87,6 +90,7 @@ local REFLECT_H2 = {{"cmd", "alt"}, "2", 2}
 local REFLECT_H3 = {{"cmd", "alt"}, "3", 2}
 local REFLECT_CHECKBOX = {{"cmd"}, "return"}
 local REFLECT_STRIKETHROUGH = {{"cmd", "shift"}, "X"}
+local REFLECT_BULLET_LIST ={{"cmd", "shift"}, "8"}
 local REFLECT_NUMBERED_LIST = {{"cmd", "shift"}, "7"}
 
 -- Sample config table. Each key is an application name, and the value is a list of shortcuts.
@@ -108,6 +112,7 @@ local shortcutsConfig = {
   Slack = { -- does not support H1,H2,H3
     { listenShortcut = INLINE_CODE_BLOCK, nativeShortcut = SLACK_INLINE_CODE_BLOCK },
     { listenShortcut = STRIKETHROUGH, nativeShortcut = SLACK_STRIKETHROUGH },
+    { listenShortcut = BULLET_LIST, nativeShortcut = SLACK_BULLET_LIST },
     { listenShortcut = CODE_BLOCK, nativeShortcut = SLACK_CODE_BLOCK },
     { listenShortcut = NUMBERED_LIST, nativeShortcut = SLACK_NUMBERED_LIST },
   },
@@ -118,6 +123,7 @@ local shortcutsConfig = {
     { listenShortcut = H3, nativeShortcut = LINEAR_H3 },
     { listenShortcut = CHECKBOX, nativeShortcut = LINEAR_CHECKBOX },
     { listenShortcut = STRIKETHROUGH, nativeShortcut = LINEAR_STRIKETHROUGH },
+    { listenShortcut = BULLET_LIST, nativeShortcut = LINEAR_BULLET_LIST },
     { listenShortcut = CODE_BLOCK, nativeShortcut = LINEAR_CODE_BLOCK },
     { listenShortcut = NUMBERED_LIST, nativeShortcut = LINEAR_NUMBERED_LIST },
   },
@@ -126,6 +132,7 @@ local shortcutsConfig = {
     { listenShortcut = H1, nativeShortcut = ASANA_H1 },
     { listenShortcut = H2, nativeShortcut = ASANA_H2 },
     { listenShortcut = STRIKETHROUGH, nativeShortcut = ASANA_STRIKETHROUGH },
+    { listenShortcut = BULLET_LIST, nativeShortcut = ASANA_BULLET_LIST },
     { listenShortcut = CODE_BLOCK, nativeShortcut = ASANA_CODE_BLOCK },
     { listenShortcut = NUMBERED_LIST, nativeShortcut = ASANA_NUMBERED_LIST },
   },
@@ -135,6 +142,7 @@ local shortcutsConfig = {
     { listenShortcut = H3, nativeShortcut = REFLECT_H3 },
     { listenShortcut = CHECKBOX, nativeShortcut = REFLECT_CHECKBOX },
     { listenShortcut = STRIKETHROUGH, nativeShortcut = REFLECT_STRIKETHROUGH },
+    { listenShortcut = BULLET_LIST, nativeShortcut = REFLECT_BULLET_LIST },
     { listenShortcut = NUMBERED_LIST, nativeShortcut = REFLECT_NUMBERED_LIST },
     -- Task - cmd shift 9
   },
