@@ -52,6 +52,42 @@ local CODE_BLOCK = {HYPER_KEY, "8"} -- except: reflect
 local NUMBERED_LIST = {HYPER_KEY, "6"} -- :all_applications!!!
 -- local HIGHLIGHT = {{"cmd", "shift"}, "H"} - natively supported on Notion & Reflect (not supported: Slack, Asana, Linear)
 
+local NOTION_H1 = {{"cmd", "alt"}, "1", 2}
+local NOTION_H2 = {{"cmd", "alt"}, "2", 2}
+local NOTION_H3 = {{"cmd", "alt"}, "3", 2}
+local NOTION_CHECKBOX = {{"cmd", "alt"}, "4", 2}
+local NOTION_STRIKETHROUGH = {{"cmd", "shift"}, "S", 2}
+local NOTION_BULLET_LIST = {{"cmd", "alt"}, "5", 2}
+local NOTION_CODE_BLOCK = {{"cmd", "alt"}, "8", 2}
+local NOTION_NUMBERED_LIST = {{"cmd", "alt"}, "6", 2}
+
+local SLACK_INLINE_CODE_BLOCK = {{"cmd", "shift"}, "C"}
+local SLACK_STRIKETHROUGH = {{"cmd", "shift"}, "X"}
+local SLACK_CODE_BLOCK = {{"cmd", "alt", "shift"}, "C"}
+local SLACK_NUMBERED_LIST = {{"cmd", "shift"}, "7"}
+
+local LINEAR_COPY_URL = {{"cmd", "shift"}, ","}
+local LINEAR_H1 = {{"ctrl", "shift"}, "1", 2}
+local LINEAR_H2 = {{"ctrl", "shift"}, "2", 2}
+local LINEAR_H3 = {{"ctrl", "shift"}, "3", 2}
+local LINEAR_CHECKBOX = {{"cmd", "shift"}, "7"}
+local LINEAR_STRIKETHROUGH = {{"cmd"}, "S", 2}
+local LINEAR_CODE_BLOCK = {{"cmd", "shift"}, "\\"}
+local LINEAR_NUMBERED_LIST = {{"cmd", "shift"}, "9"}
+
+local ASANA_INLINE_CODE_BLOCK = {{"cmd", "shift"}, "M"}
+local ASANA_H1 = {{"cmd", "alt"}, "1", 2}
+local ASANA_H2 = {{"cmd", "alt"}, "2", 2}
+local ASANA_STRIKETHROUGH = {{"cmd", "shift"}, "X"}
+local ASANA_CODE_BLOCK = {{"cmd", "shift"}, "C"}
+local ASANA_NUMBERED_LIST = {{"cmd", "shift"}, "7"}
+
+local REFLECT_H1 = {{"cmd", "alt"}, "1", 2}
+local REFLECT_H2 = {{"cmd", "alt"}, "2", 2}
+local REFLECT_H3 = {{"cmd", "alt"}, "3", 2}
+local REFLECT_CHECKBOX = {{"cmd"}, "return"}
+local REFLECT_STRIKETHROUGH = {{"cmd", "shift"}, "X"}
+local REFLECT_NUMBERED_LIST = {{"cmd", "shift"}, "7"}
 
 -- Sample config table. Each key is an application name, and the value is a list of shortcuts.
 -- "listenShortcut" is the keystroke you want Hammerspoon to listen for;
@@ -60,142 +96,46 @@ local NUMBERED_LIST = {HYPER_KEY, "6"} -- :all_applications!!!
 
 local shortcutsConfig = {
   Notion ={
-    {
-      listenShortcut = H1,
-      nativeShortcut = {{"cmd", "alt"}, "1", 2}
-    },
-    {
-      listenShortcut = H2,
-      nativeShortcut = {{"cmd", "alt"}, "2", 2}
-    },
-    {
-      listenShortcut = H3,
-      nativeShortcut = {{"cmd", "alt"}, "3", 2}
-    },
-    {
-      listenShortcut = CHECKBOX,
-      nativeShortcut = {{"cmd", "alt"}, "4", 2}
-    },
-    {
-      listenShortcut = STRIKETHROUGH,
-      nativeShortcut = {{"cmd", "shift"}, "S", 2}
-    },
-    {
-      listenShortcut = BULLET_LIST,
-      nativeShortcut = {{"cmd", "alt"}, "5", 2}
-    },
-    {
-      listenShortcut = CODE_BLOCK,
-      nativeShortcut = {{"cmd", "alt"}, "8", 2}
-    },
-    {
-      listenShortcut = NUMBERED_LIST,
-      nativeShortcut = {{"cmd", "alt"}, "6", 2}
-    },
+    { listenShortcut = H1, nativeShortcut = NOTION_H1 },
+    { listenShortcut = H2, nativeShortcut = NOTION_H2 },
+    { listenShortcut = H3, nativeShortcut = NOTION_H3 },
+    { listenShortcut = CHECKBOX, nativeShortcut = NOTION_CHECKBOX },
+    { listenShortcut = STRIKETHROUGH, nativeShortcut = NOTION_STRIKETHROUGH },
+    { listenShortcut = BULLET_LIST, nativeShortcut = NOTION_BULLET_LIST },
+    { listenShortcut = CODE_BLOCK, nativeShortcut = NOTION_CODE_BLOCK },
+    { listenShortcut = NUMBERED_LIST, nativeShortcut = NOTION_NUMBERED_LIST },
   },
   Slack = { -- does not support H1,H2,H3
-    {
-      listenShortcut = INLINE_CODE_BLOCK,
-      nativeShortcut = {{"cmd", "shift"}, "C"}
-    },
-    {
-      listenShortcut = STRIKETHROUGH,
-      nativeShortcut = {{"cmd", "shift"}, "X"}
-    },
-    {
-      listenShortcut = CODE_BLOCK,
-      nativeShortcut = {{"cmd", "alt", "shift"}, "C"}
-    },
-    {
-      listenShortcut = NUMBERED_LIST,
-      nativeShortcut = {{"cmd", "shift"}, "7"}
-    },
+    { listenShortcut = INLINE_CODE_BLOCK, nativeShortcut = SLACK_INLINE_CODE_BLOCK },
+    { listenShortcut = STRIKETHROUGH, nativeShortcut = SLACK_STRIKETHROUGH },
+    { listenShortcut = CODE_BLOCK, nativeShortcut = SLACK_CODE_BLOCK },
+    { listenShortcut = NUMBERED_LIST, nativeShortcut = SLACK_NUMBERED_LIST },
   },
   Linear = {
-    {
-      listenShortcut = COPY_URL,
-      nativeShortcut = {{"cmd", "shift"}, ","}
-    },
-    {
-      listenShortcut = H1,
-      nativeShortcut = {{"ctrl", "shift"}, "1", 2}
-    },
-    {
-      listenShortcut = H2,
-      nativeShortcut = {{"ctrl", "shift"}, "2", 2}
-    },
-    {
-      listenShortcut = H3,
-      nativeShortcut = {{"ctrl", "shift"}, "3", 2}
-    },
-    {
-      listenShortcut = CHECKBOX,
-      nativeShortcut = {{"cmd", "shift"}, "7"}
-    },
-    {
-      listenShortcut = STRIKETHROUGH,
-      nativeShortcut = {{"cmd"}, "S", 2}
-    },
-    {
-      listenShortcut = CODE_BLOCK,
-      nativeShortcut = {{"cmd", "shift"}, "\\"}
-    },
-    {
-      listenShortcut = NUMBERED_LIST,
-      nativeShortcut = {{"cmd", "shift"}, "9"}
-    },
+    { listenShortcut = COPY_URL, nativeShortcut = LINEAR_COPY_URL },
+    { listenShortcut = H1, nativeShortcut = LINEAR_H1 },
+    { listenShortcut = H2, nativeShortcut = LINEAR_H2 },
+    { listenShortcut = H3, nativeShortcut = LINEAR_H3 },
+    { listenShortcut = CHECKBOX, nativeShortcut = LINEAR_CHECKBOX },
+    { listenShortcut = STRIKETHROUGH, nativeShortcut = LINEAR_STRIKETHROUGH },
+    { listenShortcut = CODE_BLOCK, nativeShortcut = LINEAR_CODE_BLOCK },
+    { listenShortcut = NUMBERED_LIST, nativeShortcut = LINEAR_NUMBERED_LIST },
   },
   Asana = {
-    {
-      listenShortcut = INLINE_CODE_BLOCK,
-      nativeShortcut = {{"cmd", "shift"}, "M"}
-    },
-    {
-      listenShortcut = H1,
-      nativeShortcut = {{"cmd", "alt"}, "1", 2}
-    },
-    {
-      listenShortcut = H2,
-      nativeShortcut = {{"cmd", "alt"}, "2", 2}
-    },
-    {
-      listenShortcut = STRIKETHROUGH,
-      nativeShortcut = {{"cmd", "shift"}, "X"}
-    },
-    {
-      listenShortcut = CODE_BLOCK,
-      nativeShortcut = {{"cmd", "shift"}, "C"}
-    },
-    {
-      listenShortcut = NUMBERED_LIST,
-      nativeShortcut = {{"cmd", "shift"}, "7"}
-    },
+    { listenShortcut = INLINE_CODE_BLOCK, nativeShortcut = ASANA_INLINE_CODE_BLOCK },
+    { listenShortcut = H1, nativeShortcut = ASANA_H1 },
+    { listenShortcut = H2, nativeShortcut = ASANA_H2 },
+    { listenShortcut = STRIKETHROUGH, nativeShortcut = ASANA_STRIKETHROUGH },
+    { listenShortcut = CODE_BLOCK, nativeShortcut = ASANA_CODE_BLOCK },
+    { listenShortcut = NUMBERED_LIST, nativeShortcut = ASANA_NUMBERED_LIST },
   },
   Reflect = {
-    {
-      listenShortcut = H1,
-      nativeShortcut = {{"cmd", "alt"}, "1", 2}
-    },
-    {
-      listenShortcut = H2,
-      nativeShortcut = {{"cmd", "alt"}, "2", 2}
-    },
-    {
-      listenShortcut = H3,
-      nativeShortcut = {{"cmd", "alt"}, "3", 2}
-    },
-    {
-      listenShortcut = CHECKBOX,
-      nativeShortcut = {{"cmd"}, "return"}
-    },
-    {
-      listenShortcut = STRIKETHROUGH,
-      nativeShortcut = {{"cmd", "shift"}, "X"}
-    },
-    {
-      listenShortcut = NUMBERED_LIST,
-      nativeShortcut = {{"cmd", "shift"}, "7"}
-    },
+    { listenShortcut = H1, nativeShortcut = REFLECT_H1 },
+    { listenShortcut = H2, nativeShortcut = REFLECT_H2 },
+    { listenShortcut = H3, nativeShortcut = REFLECT_H3 },
+    { listenShortcut = CHECKBOX, nativeShortcut = REFLECT_CHECKBOX },
+    { listenShortcut = STRIKETHROUGH, nativeShortcut = REFLECT_STRIKETHROUGH },
+    { listenShortcut = NUMBERED_LIST, nativeShortcut = REFLECT_NUMBERED_LIST },
     -- Task - cmd shift 9
   },
 }
