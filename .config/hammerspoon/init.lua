@@ -6,6 +6,20 @@ end)
 
 
 --------------------------------------
+-- web-based (Linear, Slack, Notion, etc.) or Electron-based apps
+-- 1. Timing / Focus Issues in Web Apps (like Linear)
+--   For some apps, a short delay b/f keystroke will fix
+--   For others, two strokes with a pause in between might be necessary.
+--   ie: hs.timer.usleep(50000)  -- 50ms delay
+-- 2. Verifying “Focus” in the Editor
+--   If your caret is not in a text field, the strikethrough command may do
+--   nothing the first time. Then by the second time, Linear might place the
+--   caret in the correct location.
+--   fix: set focus then fire keystroke ** bad example provided using cordinates + mouse click
+-- 3. Global Hotkey
+--   ** this might be the answer to fix sometimes hotkeys don't work unless I reset focus on app
+--   set up global hotkeys
+--------------------------------------
 -- Commonly Used "Listen" Shortcuts --
 --------------------------------------
 -- Press cmd/ctrl + option/shift + 0 to create text.
