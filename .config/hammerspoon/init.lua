@@ -38,7 +38,7 @@ end)
 
 -- notion shortcuts
 local INLINE_CODE_BLOCK = {HYPER_KEY_NO_SHIFT, "6"} -- except: Reflect
-local COPY_URL = {{"cmd"}, "L"} -- only: Notion, Linear    except: Reflect, Slack, Asana
+local COPY_URL = {HYPER_KEY_NO_SHIFT, "1"} -- only: Notion, Linear    except: Reflect, Slack, Asana
 -- google chrome and Firefox - cmd + L takes you to address bar w/ URL selected.  Just need cmd + C
 
 -- made up shortcuts to hopefully avoid collisions
@@ -52,6 +52,7 @@ local CODE_BLOCK = {HYPER_KEY, "8"} -- except: reflect
 local NUMBERED_LIST = {HYPER_KEY, "6"} -- :all_applications!!!
 -- local HIGHLIGHT = {{"cmd", "shift"}, "H"} - natively supported on Notion & Reflect (not supported: Slack, Asana, Linear)
 
+local NOTION_COPY_URL = {{"cmd"}, "L"}
 local NOTION_H1 = {{"cmd", "alt"}, "1", 2}
 local NOTION_H2 = {{"cmd", "alt"}, "2", 2}
 local NOTION_H3 = {{"cmd", "alt"}, "3", 2}
@@ -102,6 +103,7 @@ local REFLECT_NUMBERED_LIST = {{"cmd", "shift"}, "7"}
 
 local shortcutsConfig = {
   Notion ={
+    { listenShortcut = COPY_URL, nativeShortcut = NOTION_COPY_URL },
     { listenShortcut = H1, nativeShortcut = NOTION_H1 },
     { listenShortcut = H2, nativeShortcut = NOTION_H2 },
     { listenShortcut = H3, nativeShortcut = NOTION_H3 },
