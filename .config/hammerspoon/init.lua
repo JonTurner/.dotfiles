@@ -40,6 +40,7 @@ end)
 local INLINE_CODE_BLOCK = {HYPER_KEY_NO_SHIFT, "6"} -- except: Reflect
 local COPY_URL = {HYPER_KEY_NO_SHIFT, "1"} -- only: Notion, Linear    except: Reflect, Slack, Asana
 -- google chrome and Firefox - cmd + L takes you to address bar w/ URL selected.  Just need cmd + C
+-- Linear: cmd + shift + . copies the branch name to your clipboard
 
 -- made up shortcuts to hopefully avoid collisions
 local H1 = {HYPER_KEY, "1"} -- except: Slack
@@ -50,6 +51,7 @@ local STRIKETHROUGH = {HYPER_KEY_NO_SHIFT, "S"} -- :all_applications!!!  (left o
 local BULLET_LIST ={HYPER_KEY_NO_SHIFT, "8"} -- :all_applications!!!
 local CODE_BLOCK = {HYPER_KEY, "8"} -- except: reflect
 local NUMBERED_LIST = {HYPER_KEY, "6"} -- :all_applications!!!
+local HIGHLIGHT = {HYPER_KEY, "5"} -- natively supported on Notion & Reflect (not supported: Slack, Asana, Linear)
 -- local HIGHLIGHT = {{"cmd", "shift"}, "H"} - natively supported on Notion & Reflect (not supported: Slack, Asana, Linear)
 
 local NOTION_COPY_URL = {{"cmd"}, "L"}
@@ -62,6 +64,7 @@ local NOTION_STRIKETHROUGH = {{"cmd", "shift"}, "S", 2}
 local NOTION_BULLET_LIST = {{"cmd", "alt"}, "5", 2}
 local NOTION_CODE_BLOCK = {{"cmd", "alt"}, "8", 2}
 local NOTION_NUMBERED_LIST = {{"cmd", "alt"}, "6", 2}
+local NOTION_HIGHLIGHT = {{"cmd", "shift"}, "H"}
 
 local SLACK_INLINE_CODE_BLOCK = {{"cmd", "shift"}, "C"}
 local SLACK_STRIKETHROUGH = {{"cmd", "shift"}, "X"}
@@ -95,7 +98,11 @@ local REFLECT_CHECKBOX = {{"cmd"}, "return"}
 local REFLECT_STRIKETHROUGH = {{"cmd", "shift"}, "X"}
 local REFLECT_BULLET_LIST ={{"cmd", "shift"}, "8"}
 local REFLECT_NUMBERED_LIST = {{"cmd", "shift"}, "7"}
+local REFLECT_HIGHLIGHT = {{"cmd", "shift"}, "H"}
 
+local CHROME_COPY_URL = {{"cmd"}, "L", 2}
+
+local FIREFOX_COPY_URL = {{"cmd"}, "L"}
 -- Sample config table. Each key is an application name, and the value is a list of shortcuts.
 -- "listenShortcut" is the keystroke you want Hammerspoon to listen for;
 -- "nativeShortcut" is what Hammerspoon sends to the app.
@@ -113,6 +120,7 @@ local shortcutsConfig = {
     { listenShortcut = BULLET_LIST, nativeShortcut = NOTION_BULLET_LIST },
     { listenShortcut = CODE_BLOCK, nativeShortcut = NOTION_CODE_BLOCK },
     { listenShortcut = NUMBERED_LIST, nativeShortcut = NOTION_NUMBERED_LIST },
+    { listenShortcut = HIGHLIGHT, nativeShortcut = NOTION_HIGHLIGHT },
   },
   Slack = { -- does not support H1,H2,H3
     { listenShortcut = INLINE_CODE_BLOCK, nativeShortcut = SLACK_INLINE_CODE_BLOCK },
@@ -150,7 +158,14 @@ local shortcutsConfig = {
     { listenShortcut = STRIKETHROUGH, nativeShortcut = REFLECT_STRIKETHROUGH },
     { listenShortcut = BULLET_LIST, nativeShortcut = REFLECT_BULLET_LIST },
     { listenShortcut = NUMBERED_LIST, nativeShortcut = REFLECT_NUMBERED_LIST },
+    { listenShortcut = HIGHLIGHT, nativeShortcut = REFLECT_HIGHLIGHT },
     -- Task - cmd shift 9
+  },
+  ["Google Chrome"] = {
+    { listenShortcut = COPY_URL, nativeShortcut = CHROME_COPY_URL },
+  },
+  Firefox = {
+    { listenShortcut = COPY_URL, nativeShortcut = FIREFOX_COPY_URL },
   },
 }
 

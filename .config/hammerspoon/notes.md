@@ -12,6 +12,7 @@ D - BULLET_LIST ={{"cmd", "shift"}, "8"} -- -- :all_applications!!!
 G - NUMBERED_LIST = {HYPER_KEY, "6"} -- :all_applications!!!
 F - CHECKBOX = {HYPER_KEY, "4"}  -- except: Slack,Asana
 J - COPY_URL = {{"cmd"}, "L"} -- only: Notion, Linear    except: Reflect, Slack, Asana
+J-HOLD - COPY URL from Chrome/Firefox
 
 
 T - Task in Reflect - cmd shift 9
