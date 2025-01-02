@@ -202,37 +202,91 @@ local shortcutsConfig = {
 
 -- For each app in the table, we create a window filter that “turns on” hotkeys
 -- when the app is focused and “turns them off” when you switch away.
-for appName, shortcuts in pairs(shortcutsConfig) do
-  -- Create a window filter for just this one app
-  local appFilter = hs.window.filter.new(false):setAppFilter(appName)
-  local hotkeys = {}  -- We'll store the hotkey objects so we can remove them later
+-- for appName, shortcuts in pairs(shortcutsConfig) do
+--   -- Create a window filter for just this one app
+--   local appFilter = hs.window.filter.new(false):setAppFilter(appName)
+--   local hotkeys = {}  -- We'll store the hotkey objects so we can remove them later
+--
+--   -- When the app is focused, bind the relevant hotkeys
+--   appFilter:subscribe(hs.window.filter.windowFocused, function()
+--     for _, shortcutItem in ipairs(shortcuts) do
+--       local listenMods, listenKey = table.unpack(shortcutItem.listenShortcut)
+--       local sendMods, sendKey, times = table.unpack(shortcutItem.nativeShortcut)
+--       times = times or 1
+--
+--       -- Bind the hotkey
+--       local h = hs.hotkey.bind(listenMods, listenKey, function()
+--         hs.timer.usleep(50000)  -- 50ms delay
+--         -- hs.alert.show("bind -> " .. listenKey)
+--         for i = 1, times do
+--           print("bind -> " .. listenKey)
+--           hs.eventtap.keyStroke(sendMods, sendKey)
+--         end
+--       end)
+--       table.insert(hotkeys, h)
+--     end
+--   end)
+--
+--   -- When the app is unfocused, disable and delete all the hotkeys we just created
+--   appFilter:subscribe(hs.window.filter.windowUnfocused, function()
+--     for _, h in ipairs(hotkeys) do
+--       h:delete()
+--     end
+--     hotkeys = {}
+--   end)
+-- end
 
-  -- When the app is focused, bind the relevant hotkeys
-  appFilter:subscribe(hs.window.filter.windowFocused, function()
-    for _, shortcutItem in ipairs(shortcuts) do
-      local listenMods, listenKey = table.unpack(shortcutItem.listenShortcut)
-      local sendMods, sendKey, times = table.unpack(shortcutItem.nativeShortcut)
-      times = times or 1
+--------------------------------------------
+-- Flatten "shortcutsConfig" into a table --
+--------------------------------------------
+local function comboKey(mods, key)
+  local sortedMods = {table.unpack(mods)}
+  table.sort(sortedMods)
+  return table.concat(sortedMods, "_") .. "_" .. key
+end
 
-      -- Bind the hotkey
-      local h = hs.hotkey.bind(listenMods, listenKey, function()
-        hs.timer.usleep(50000)  -- 50ms delay
-        -- hs.alert.show("bind -> " .. listenKey)
+local globalShortcuts = {}
+
+for appName, shortcutList in pairs(shortcutsConfig) do
+  for _, item in ipairs(shortcutList) do
+    local listenMods, listenKey = table.unpack(item.listenShortcut)
+    local cKey = comboKey(listenMods, listenKey)
+
+    if not globalShortcuts[cKey] then
+      globalShortcuts[cKey] = {
+        mods = listenMods,
+        key  = listenKey,
+        apps = {},
+      }
+    end
+
+    table.insert(globalShortcuts[cKey].apps, {
+      name = appName,
+      nativeShortcut = item.nativeShortcut,
+    })
+  end
+end
+
+------------------------------------------------
+-- Bind a single global hotkey for each combo --
+------------------------------------------------
+for cKey, data in pairs(globalShortcuts) do
+  hs.hotkey.bind(data.mods, data.key, function()
+    local frontApp = hs.application.frontmostApplication()
+    local frontAppName = frontApp and frontApp:name() or ""
+
+    for _, appItem in ipairs(data.apps) do
+      if appItem.name == frontAppName then
+        local sendMods, sendKey, times = table.unpack(appItem.nativeShortcut)
+        times = times or 1
+        -- Optional brief delay
+        hs.timer.usleep(50000)
         for i = 1, times do
-          print("bind -> " .. listenKey)
           hs.eventtap.keyStroke(sendMods, sendKey)
         end
-      end)
-      table.insert(hotkeys, h)
+        break
+      end
     end
-  end)
-
-  -- When the app is unfocused, disable and delete all the hotkeys we just created
-  appFilter:subscribe(hs.window.filter.windowUnfocused, function()
-    for _, h in ipairs(hotkeys) do
-      h:delete()
-    end
-    hotkeys = {}
   end)
 end
 
