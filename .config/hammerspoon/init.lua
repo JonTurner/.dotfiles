@@ -55,146 +55,146 @@ local NUMBERED_LIST = {HYPER_KEY, "6"} -- :all_applications!!!
 
 -- Sample config table. Each key is an application name, and the value is a list of shortcuts.
 -- "listenShortcut" is the keystroke you want Hammerspoon to listen for;
--- "overwriteShortcut" is what Hammerspoon sends to the app.
+-- "nativeShortcut" is what Hammerspoon sends to the app.
 -- Add more as needed…
 
 local shortcutsConfig = {
   Notion ={
     {
       listenShortcut = H1,
-      overwriteShortcut = {{"cmd", "alt"}, "1", 2}
+      nativeShortcut = {{"cmd", "alt"}, "1", 2}
     },
     {
       listenShortcut = H2,
-      overwriteShortcut = {{"cmd", "alt"}, "2", 2}
+      nativeShortcut = {{"cmd", "alt"}, "2", 2}
     },
     {
       listenShortcut = H3,
-      overwriteShortcut = {{"cmd", "alt"}, "3", 2}
+      nativeShortcut = {{"cmd", "alt"}, "3", 2}
     },
     {
       listenShortcut = CHECKBOX,
-      overwriteShortcut = {{"cmd", "alt"}, "4", 2}
+      nativeShortcut = {{"cmd", "alt"}, "4", 2}
     },
     {
       listenShortcut = STRIKETHROUGH,
-      overwriteShortcut = {{"cmd", "shift"}, "S", 2}
+      nativeShortcut = {{"cmd", "shift"}, "S", 2}
     },
     {
       listenShortcut = BULLET_LIST,
-      overwriteShortcut = {{"cmd", "alt"}, "5", 2}
+      nativeShortcut = {{"cmd", "alt"}, "5", 2}
     },
     {
       listenShortcut = CODE_BLOCK,
-      overwriteShortcut = {{"cmd", "alt"}, "8", 2}
+      nativeShortcut = {{"cmd", "alt"}, "8", 2}
     },
     {
       listenShortcut = NUMBERED_LIST,
-      overwriteShortcut = {{"cmd", "alt"}, "6", 2}
+      nativeShortcut = {{"cmd", "alt"}, "6", 2}
     },
   },
   Slack = { -- does not support H1,H2,H3
     {
       listenShortcut = INLINE_CODE_BLOCK,
-      overwriteShortcut = {{"cmd", "shift"}, "C"}
+      nativeShortcut = {{"cmd", "shift"}, "C"}
     },
     {
       listenShortcut = STRIKETHROUGH,
-      overwriteShortcut = {{"cmd", "shift"}, "X"}
+      nativeShortcut = {{"cmd", "shift"}, "X"}
     },
     {
       listenShortcut = CODE_BLOCK,
-      overwriteShortcut = {{"cmd", "alt", "shift"}, "C"}
+      nativeShortcut = {{"cmd", "alt", "shift"}, "C"}
     },
     {
       listenShortcut = NUMBERED_LIST,
-      overwriteShortcut = {{"cmd", "shift"}, "7"}
+      nativeShortcut = {{"cmd", "shift"}, "7"}
     },
   },
   Linear = {
     {
       listenShortcut = COPY_URL,
-      overwriteShortcut = {{"cmd", "shift"}, ","}
+      nativeShortcut = {{"cmd", "shift"}, ","}
     },
     {
       listenShortcut = H1,
-      overwriteShortcut = {{"ctrl", "shift"}, "1", 2}
+      nativeShortcut = {{"ctrl", "shift"}, "1", 2}
     },
     {
       listenShortcut = H2,
-      overwriteShortcut = {{"ctrl", "shift"}, "2", 2}
+      nativeShortcut = {{"ctrl", "shift"}, "2", 2}
     },
     {
       listenShortcut = H3,
-      overwriteShortcut = {{"ctrl", "shift"}, "3", 2}
+      nativeShortcut = {{"ctrl", "shift"}, "3", 2}
     },
     {
       listenShortcut = CHECKBOX,
-      overwriteShortcut = {{"cmd", "shift"}, "7"}
+      nativeShortcut = {{"cmd", "shift"}, "7"}
     },
     {
       listenShortcut = STRIKETHROUGH,
-      overwriteShortcut = {{"cmd"}, "S", 2}
+      nativeShortcut = {{"cmd"}, "S", 2}
     },
     {
       listenShortcut = CODE_BLOCK,
-      overwriteShortcut = {{"cmd", "shift"}, "\\"}
+      nativeShortcut = {{"cmd", "shift"}, "\\"}
     },
     {
       listenShortcut = NUMBERED_LIST,
-      overwriteShortcut = {{"cmd", "shift"}, "9"}
+      nativeShortcut = {{"cmd", "shift"}, "9"}
     },
   },
   Asana = {
     {
       listenShortcut = INLINE_CODE_BLOCK,
-      overwriteShortcut = {{"cmd", "shift"}, "M"}
+      nativeShortcut = {{"cmd", "shift"}, "M"}
     },
     {
       listenShortcut = H1,
-      overwriteShortcut = {{"cmd", "alt"}, "1", 2}
+      nativeShortcut = {{"cmd", "alt"}, "1", 2}
     },
     {
       listenShortcut = H2,
-      overwriteShortcut = {{"cmd", "alt"}, "2", 2}
+      nativeShortcut = {{"cmd", "alt"}, "2", 2}
     },
     {
       listenShortcut = STRIKETHROUGH,
-      overwriteShortcut = {{"cmd", "shift"}, "X"}
+      nativeShortcut = {{"cmd", "shift"}, "X"}
     },
     {
       listenShortcut = CODE_BLOCK,
-      overwriteShortcut = {{"cmd", "shift"}, "C"}
+      nativeShortcut = {{"cmd", "shift"}, "C"}
     },
     {
       listenShortcut = NUMBERED_LIST,
-      overwriteShortcut = {{"cmd", "shift"}, "7"}
+      nativeShortcut = {{"cmd", "shift"}, "7"}
     },
   },
   Reflect = {
     {
       listenShortcut = H1,
-      overwriteShortcut = {{"cmd", "alt"}, "1", 2}
+      nativeShortcut = {{"cmd", "alt"}, "1", 2}
     },
     {
       listenShortcut = H2,
-      overwriteShortcut = {{"cmd", "alt"}, "2", 2}
+      nativeShortcut = {{"cmd", "alt"}, "2", 2}
     },
     {
       listenShortcut = H3,
-      overwriteShortcut = {{"cmd", "alt"}, "3", 2}
+      nativeShortcut = {{"cmd", "alt"}, "3", 2}
     },
     {
       listenShortcut = CHECKBOX,
-      overwriteShortcut = {{"cmd"}, "return"}
+      nativeShortcut = {{"cmd"}, "return"}
     },
     {
       listenShortcut = STRIKETHROUGH,
-      overwriteShortcut = {{"cmd", "shift"}, "X"}
+      nativeShortcut = {{"cmd", "shift"}, "X"}
     },
     {
       listenShortcut = NUMBERED_LIST,
-      overwriteShortcut = {{"cmd", "shift"}, "7"}
+      nativeShortcut = {{"cmd", "shift"}, "7"}
     },
     -- Task - cmd shift 9
   },
@@ -211,7 +211,7 @@ for appName, shortcuts in pairs(shortcutsConfig) do
   appFilter:subscribe(hs.window.filter.windowFocused, function()
     for _, shortcutItem in ipairs(shortcuts) do
       local listenMods, listenKey = table.unpack(shortcutItem.listenShortcut)
-      local sendMods, sendKey, times = table.unpack(shortcutItem.overwriteShortcut)
+      local sendMods, sendKey, times = table.unpack(shortcutItem.nativeShortcut)
       times = times or 1
 
       -- Bind the hotkey
