@@ -37,7 +37,7 @@ end)
 
 
 -- notion shortcuts
-local INLINE_CODE_BLOCK = {{"cmd"}, "E"} -- except: Reflect
+local INLINE_CODE_BLOCK = {HYPER_KEY_NO_SHIFT, "6"} -- except: Reflect
 local COPY_URL = {{"cmd"}, "L"} -- only: Notion, Linear    except: Reflect, Slack, Asana
 -- google chrome and Firefox - cmd + L takes you to address bar w/ URL selected.  Just need cmd + C
 
@@ -55,6 +55,7 @@ local NUMBERED_LIST = {HYPER_KEY, "6"} -- :all_applications!!!
 local NOTION_H1 = {{"cmd", "alt"}, "1", 2}
 local NOTION_H2 = {{"cmd", "alt"}, "2", 2}
 local NOTION_H3 = {{"cmd", "alt"}, "3", 2}
+local NOTION_INLINE_CODE_BLOCK = {{"cmd"}, "E"}
 local NOTION_CHECKBOX = {{"cmd", "alt"}, "4", 2}
 local NOTION_STRIKETHROUGH = {{"cmd", "shift"}, "S", 2}
 local NOTION_BULLET_LIST = {{"cmd", "alt"}, "5", 2}
@@ -71,6 +72,7 @@ local LINEAR_COPY_URL = {{"cmd", "shift"}, ","}
 local LINEAR_H1 = {{"ctrl", "shift"}, "1", 2}
 local LINEAR_H2 = {{"ctrl", "shift"}, "2", 2}
 local LINEAR_H3 = {{"ctrl", "shift"}, "3", 2}
+local LINEAR_INLINE_CODE_BLOCK = {{"cmd"}, "E"}
 local LINEAR_CHECKBOX = {{"cmd", "shift"}, "7"}
 local LINEAR_STRIKETHROUGH = {{"cmd"}, "S", 2}
 local LINEAR_BULLET_LIST ={{"cmd", "shift"}, "8"}
@@ -103,6 +105,7 @@ local shortcutsConfig = {
     { listenShortcut = H1, nativeShortcut = NOTION_H1 },
     { listenShortcut = H2, nativeShortcut = NOTION_H2 },
     { listenShortcut = H3, nativeShortcut = NOTION_H3 },
+    { listenShortcut = INLINE_CODE_BLOCK, nativeShortcut = NOTION_INLINE_CODE_BLOCK },
     { listenShortcut = CHECKBOX, nativeShortcut = NOTION_CHECKBOX },
     { listenShortcut = STRIKETHROUGH, nativeShortcut = NOTION_STRIKETHROUGH },
     { listenShortcut = BULLET_LIST, nativeShortcut = NOTION_BULLET_LIST },
@@ -121,6 +124,7 @@ local shortcutsConfig = {
     { listenShortcut = H1, nativeShortcut = LINEAR_H1 },
     { listenShortcut = H2, nativeShortcut = LINEAR_H2 },
     { listenShortcut = H3, nativeShortcut = LINEAR_H3 },
+    { listenShortcut = INLINE_CODE_BLOCK, nativeShortcut = LINEAR_INLINE_CODE_BLOCK },
     { listenShortcut = CHECKBOX, nativeShortcut = LINEAR_CHECKBOX },
     { listenShortcut = STRIKETHROUGH, nativeShortcut = LINEAR_STRIKETHROUGH },
     { listenShortcut = BULLET_LIST, nativeShortcut = LINEAR_BULLET_LIST },
