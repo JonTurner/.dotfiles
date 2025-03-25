@@ -81,47 +81,70 @@ require'lspconfig'.sqlls.setup{
 require("which-key").setup {
   -- other which-key settings can go here
 }
-
-require("which-key").register({
-  ["<leader>"] = {
-    g = {
-      name = "[G]ithub",  -- optional group name for "a"
-      s = "Git [S]tatus"
-    },
-    a = {
-      name = "[a]dd file Harpoon"
-    },
-    p = {
-      name = "Telescope",
-      a = "[A]uto commands",
-      f = "[F]ind File",
-      g = {
-        name = "[G]it",
-        b = "[B]ranches",
-        c = "[C]ommits",
-        s = "[S]tatus",
-      },
-      b = "[B]uffers",
-      m = "[M]marks",
-      r = "[R]egesters",
-      s = "Grep"
-    },
-    v = {
-      name = "CoPilot",
-      h = "CoPilot [H]elp",
-      p = {
-        name = "[P]acker",
-      },
-    },
-    -- w = {
-    --   name = "VimWiki"
-    -- },
-    z = {
-      name = "[Z]oom",
-      z = "Zoom In",
-      Z = "Zoom Out"
-    },
-
-  },
+require("which-key").add({
+  { "<leader>g", group = "[G]ithub" },
+  { "<leader>gs", desc = "Git [S]tatus" },
+  { "<leader>a", desc = "[a]dd file Harpoon" },
+  { "<leader>e", desc = "Harpoon [E]xplorer " },
+  { "<leader>p", group = "Telescope" },
+  { "<leader>pa", desc = "[A]uto commands" },
+  { "<leader>pf", desc = "[F]ind File" },
+  { "<leader>pg", group = "[G]it" },
+  { "<leader>pgb", desc = "[B]ranches" },
+  { "<leader>pgc", desc = "[C]ommits" },
+  { "<leader>pgs", desc = "[S]tatus" },
+  { "<leader>pb", desc = "[B]uffers" },
+  { "<leader>pm", desc = "[M]marks" },
+  { "<leader>pr", desc = "[R]egesters" },
+  { "<leader>ps", desc = "Grep" },
+  { "<leader>v", group = "CoPilot" },
+  { "<leader>vh", desc = "CoPilot [H]elp" },
+  { "<leader>vp", group = "[P]acker" },
+  -- { "<leader>w", group = "VimWiki" },
+  { "<leader>z", group = "[Z]oom" },
+  { "<leader>zz", desc = "Zoom In" },
+  { "<leader>zZ", desc = "Zoom Out" },
 })
+
+-- require("which-key").register({
+--   ["<leader>"] = {
+--     g = {
+--       name = "[G]ithub",  -- optional group name for "a"
+--       s = "Git [S]tatus"
+--     },
+--     a = "[a]dd file Harpoon",
+--     e = "Harpoon [E]xplorer ",
+--     p = {
+--       name = "Telescope",
+--       a = "[A]uto commands",
+--       f = "[F]ind File",
+--       g = {
+--         name = "[G]it",
+--         b = "[B]ranches",
+--         c = "[C]ommits",
+--         s = "[S]tatus",
+--       },
+--       b = "[B]uffers",
+--       m = "[M]marks",
+--       r = "[R]egesters",
+--       s = "Grep"
+--     },
+--     v = {
+--       name = "CoPilot",
+--       h = "CoPilot [H]elp",
+--       p = {
+--         name = "[P]acker",
+--       },
+--     },
+--     -- w = {
+--     --   name = "VimWiki"
+--     -- },
+--     z = {
+--       name = "[Z]oom",
+--       z = "Zoom In",
+--       Z = "Zoom Out"
+--     },
+--
+--   },
+-- })
 

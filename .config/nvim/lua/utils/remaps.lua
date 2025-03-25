@@ -4,12 +4,20 @@ local check_duplicates = require("utils.duplicates").check_duplicates
 local X = {}
 
 local which_key_lazy_registers = nil
+-- local function lazy_register_which_key(input, description)
+-- 	if which_key_lazy_registers == nil then
+-- 		which_key_lazy_registers = {}
+-- 	end
+--
+-- 	which_key_lazy_registers[input] = description
+-- end
 local function lazy_register_which_key(input, description)
-	if which_key_lazy_registers == nil then
-		which_key_lazy_registers = {}
-	end
+    if which_key_lazy_registers == nil then
+        which_key_lazy_registers = {}
+    end
 
-	which_key_lazy_registers[input] = description
+    -- Convert to new format
+    table.insert(which_key_lazy_registers, { input, desc = description })
 end
 
 local function try_add_to_which_key_by_input(input, description)
@@ -22,9 +30,14 @@ local function try_add_to_which_key_by_input(input, description)
 				which_key.register(which_key_lazy_registers)
 				which_key_lazy_registers = nil
 			end
-			which_key.register({
-				[input] = description,
-			})
+			-- which_key.register({
+			-- 	[input] = description,
+			-- })
+
+      -- Use the new format for registration
+      which_key.register({
+        { input, desc = description }
+      })
 		else
 			lazy_register_which_key(input, description)
 		end
@@ -58,4 +71,28 @@ function X.which_key(input, description)
 	try_add_to_which_key_by_input(input, description)
 end
 
+-- Handle group registrations separately
+function X.which_key_group(input, group_name)
+    local present_which_key, which_key = pcall(require, "which-key")
+
+    local has_leader = string.find(input, "<leader>")
+    if has_leader then
+        if present_which_key then
+            if which_key_lazy_registers ~= nil then
+                which_key.register(which_key_lazy_registers)
+                which_key_lazy_registers = nil
+            end
+
+            -- Use the new format for group registration
+            which_key.register({
+                { input, group = group_name }
+            })
+        else
+            if which_key_lazy_registers == nil then
+                which_key_lazy_registers = {}
+            end
+            table.insert(which_key_lazy_registers, { input, group = group_name })
+        end
+    end
+end
 return X
